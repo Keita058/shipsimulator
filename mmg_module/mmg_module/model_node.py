@@ -97,10 +97,10 @@ class ModelNode(Node):
       delta_time,
     )
     self.pub_cmd_vel.publish(self.cmd_vel_Twist)
-    self.get_logger().info('Publish:u='+str(self.cmd_vel_Twist.linear.x)+",v="+str(self.cmd_vel_Twist.linear.y)+",r="+str(self.cmd_vel_Twist.angular.z))
+    self.get_logger().info('Publish: u="%s", v="%s", r="%s"'%(self.cmd_vel_Twist.linear.x, self.cmd_vel_Twist.linear.y, self.cmd_vel_Twist.angular.z))
 
   def listener_callback(self,msg):
-    self.get_logger().info("Subscribe:n_p="+str(msg.n_p)+",rudder_angle="+str(msg.rudder_angle_degree))
+    self.get_logger().info('Subscribe: n_p="%s", rudder_angle="%s"'%(msg.n_p, msg.rudder_angular_degree))
 
     self.n_p=msg.n_p
     self.rudder_angle_degree=msg.rudder_angle_degree
