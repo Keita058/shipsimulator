@@ -43,32 +43,32 @@ class ActuatorNode(Node):
 
     def actuated(self,n_p,rudder_angle,delta_time):
         actuated_msg=Control()
-        ret_n_p=ret_angle=0.0
+        res_n_p=res_angle=0.0
 
         current_n_p=self.actuated_list['n_p'][-1]
         d_n_p=n_p-current_n_p
         if abs(d_n_p)<0.5*delta_time:
-            ret_n_p=n_p
+            res_n_p=n_p
         else:
             if d_n_p>0:
-                ret_n_p=current_n_p+0.5*delta_time
+                res_n_p=current_n_p+0.5*delta_time
             else:
-                ret_n_p=current_n_p-0.5*delta_time
+                res_n_p=current_n_p-0.5*delta_time
 
         current_angle=self.actuated_list['rudder_angle'][-1]
         d_angle=rudder_angle-current_angle
         if abs(d_angle)<0.5*delta_time:
-            ret_angle=rudder_angle
+            res_angle=rudder_angle
         else:
             if d_angle>0:
-                ret_angle=current_angle+0.5*delta_time
+                res_angle=current_angle+0.5*delta_time
             else:
-                ret_angle=current_angle-0.5*delta_time
+                res_angle=current_angle-0.5*delta_time
 
-        self.actuated_list['n_p'].append(ret_n_p)
-        self.actuated_list['rudder_angle'].append(ret_angle)
-        actuated_msg.n_p=ret_n_p
-        actuated_msg.rudder_angle_degree=ret_angle
+        self.actuated_list['n_p'].append(res_n_p)
+        self.actuated_list['rudder_angle'].append(res_angle)
+        actuated_msg.n_p=res_n_p
+        actuated_msg.rudder_angle_degree=res_angle
         return actuated_msg
 
 

@@ -7,9 +7,6 @@ from rclpy.node import Node
 from shipsim_msgs_module.msg import Control
 from sensor_msgs.msg import Joy
 
-from mmg_module.ShipControllerMMG import Ui_ShipControllerMMG
-
-
 class MmgControllerNode(Node):
     """ControllerNode."""
     n_p=0.0
@@ -53,7 +50,7 @@ class MmgControllerNode(Node):
         msg.n_p=self.n_p
         msg.rudder_angle_degree=self.rudder_angle_degree
         self.publisher.publish(msg)
-        self.get_logger().info("Publish:n_p="+str(msg.n_p)+", rudder="+str(msg.rudder_angle_degree))
+        self.get_logger().info('`Publish: n_p="%s", rudder_angle="%s"'%(self.msg.n_p,self.msg.rudder_angle_degree))
 
 
 def main(args=None):
