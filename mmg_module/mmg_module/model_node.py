@@ -65,21 +65,25 @@ class ModelNode(Node):
     self.declare_parameter("N_vvv", -0.030)
     self.declare_parameter("N_rrr", -0.013)
 
-    self.declare_parameter("publish_address", "/ship1/cmd_vel")
-    self.declare_parameter("subscribe_address", "/ship1/cmd_input")
-    self.declare_parameter("delta_time", 0.01)
 
+    self.declare_parameter("subscribe_address", "/ship1/cmd_input")
     subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
     self.subscription=self.create_subscription(
       Control, subscribe_address, self.listener_callback, 10
     )
 
-
+    self.declare_parameter("publish_address", "/ship1/cmd_vel")
     publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
     self.pub_cmd_vel=self.create_publisher(Twist,publish_address,10)
 
+    self.declare_parameter("delta_time", 0.01)
     delta_time=self.get_parameter("delta_time").value
     self.timer=self.create_timer(delta_time,self.sender_callback)
+
+  def listener_callback(self,msg):
+    self.get_logger().info('Subscribe: n_p="%s", rudder_angle="%s"'%(msg.n_p, msg.rudder_angular_degree))
+    self.n_p=msg.n_p
+    self.rudder_angle_degree=msg.rudder_angle_degree
 
   def sender_callback(self):
     delta_time=self.get_parameter("delta_time").value
@@ -98,12 +102,6 @@ class ModelNode(Node):
     )
     self.pub_cmd_vel.publish(self.cmd_vel_Twist)
     self.get_logger().info('Publish: u="%s", v="%s", r="%s"'%(self.cmd_vel_Twist.linear.x, self.cmd_vel_Twist.linear.y, self.cmd_vel_Twist.angular.z))
-
-  def listener_callback(self,msg):
-    self.get_logger().info('Subscribe: n_p="%s", rudder_angle="%s"'%(msg.n_p, msg.rudder_angular_degree))
-
-    self.n_p=msg.n_p
-    self.rudder_angle_degree=msg.rudder_angle_degree
 
 
   def get_twist_from_MMG(self, u_now, v_now, r_now, n_p, rudder_angle_degree, delta_time):
