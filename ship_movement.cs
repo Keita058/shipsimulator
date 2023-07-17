@@ -18,6 +18,7 @@ public class ship_movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         ros.Subscribe<TwistMsg>("/ship1/cmd_vel",OnSubscribe);
         ros.RegisterPublisher<TwistMsg>("/ship1/obs_pose");
+        ros.RegisterPublisher<TwistMsg>("/ship1/obs_vel");
     }
 
     // Update is called once per frame
@@ -41,12 +42,17 @@ public class ship_movement : MonoBehaviour
         position.y = ship_pos.x;
         attitude.z = ship_ang.y;
 
-        TwistMsg pose = new TwistMsg(position, attitude);
+        TwistMsg obs_pose = new TwistMsg(position, attitude);
 
-        ros.Publish("/ship1/obs_pose",pose);
+        Vector3 ship_vel = rb.velocity;
+        Vector3Msg velocity = new Vector3Msg((float)ship_vel.z, (float)ship_vel.x, (float)ship_vel.y);
+        Vector3Msg angularVelocity = new Vector3Msg(0f, 0f, 0f);
+
+        ros.Publish("/ship1/obs_pose",obs_pose);
+        ros.Publish("/ship1/obs_vel",obs_vel);
 
         Debug.Log($"Subscribe: u={msg.linear.x}, v={msg.linear.y}, r={msg.angular.z}");
-        Debug.Log($"Publish: x={pose.linear.x}, y={pose.linear.y}, psi={pose.angular.z}");
+        Debug.Log($"Publish: x={obs_pose.linear.x}, y={obs_pose.linear.y}, psi={obs_pose.angular.z}");
     }
 
     static Vector3 Rotate_local2World(float u, float v, float theta){
