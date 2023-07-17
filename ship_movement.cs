@@ -10,7 +10,6 @@ public class ship_movement : MonoBehaviour
     public Rigidbody rb;
     ROSConnection ros;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +45,9 @@ public class ship_movement : MonoBehaviour
 
         Vector3 ship_vel = rb.velocity;
         Vector3Msg velocity = new Vector3Msg((float)ship_vel.z, (float)ship_vel.x, (float)ship_vel.y);
-        Vector3Msg angularVelocity = new Vector3Msg(0f, 0f, 0f);
+        Vector3Msg angularVelocity = new Vector3Msg((float)msg.angular.x, (float)msg.angular.y, (float)msg.angular.z);
+
+        TwistMsg obs_vel = new TwistMsg(velocity, angularVelocity);
 
         ros.Publish("/ship1/obs_pose",obs_pose);
         ros.Publish("/ship1/obs_vel",obs_vel);
