@@ -19,6 +19,7 @@ class ActuatorNode(Node):
         self.subscription=self.create_subscription(
             Control, subscribe_address, self.listener_callback, 10
         )
+        self.declare_parameter("sub_delta_time", 0.1)
 
         self.declare_parameter("publish_address","/ship1/cmd_input")
         self.declare_parameter("delta_time",0.01)
@@ -35,8 +36,8 @@ class ActuatorNode(Node):
     def sender_callback(self):
         self.pub_actuator_msg=Control()
 
-        delta_time=self.get_parameter("delta_time").value
-        self.pub_actuator_msg=self.actuated(self.n_p, self.rudder_angle_degree,delta_time)
+        sub_delta_time=self.get_parameter("sub_delta_time").value
+        self.pub_actuator_msg=self.actuated(self.n_p, self.rudder_angle_degree,sub_delta_time)
 
         self.pub_actuator.publish(self.pub_actuator_msg)
         self.get_logger().info('Publish: n_p="%s", rudder_angle="%s"'%(self.pub_actuator_msg.n_p, self.pub_actuator_msg.rudder_angle_degree))
