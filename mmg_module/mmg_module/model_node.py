@@ -81,7 +81,7 @@ class ModelNode(Node):
     self.timer=self.create_timer(delta_time,self.sender_callback)
 
   def listener_callback(self,msg):
-    self.get_logger().info('Subscribe: n_p="%s", rudder_angle="%s"'%(msg.n_p, msg.rudder_angular_degree))
+    self.get_logger().info('Subscribe: n_p="%s", rudder_angle="%s"'%(msg.n_p, msg.rudder_angle_degree))
     self.n_p=msg.n_p
     self.rudder_angle_degree=msg.rudder_angle_degree
 
