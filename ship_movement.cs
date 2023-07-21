@@ -10,6 +10,10 @@ public class ship_movement : MonoBehaviour
     public Rigidbody rb;
     ROSConnection ros;
 
+    public float AngularVelocity { get; private set; }
+    public Vector3 Axis { get; private set; }
+    private Vector3 _prevRotation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,29 +27,30 @@ public class ship_movement : MonoBehaviour
     // Update is called once per frame
     void OnSubscribe(TwistMsg msg)
     {
-        Vector3 ang = rb.transform.localEulerAngles;
-
+        //現在の船の方位を取得
+        Vector3 ang = rb.transform.eulerAngles;
+        //船から見たX軸Y軸の速度からワールド座標系のX軸Y軸速度へ変換
         Vector3 world_vel = Rotate_local2World((float)msg.linear.x, (float)msg.linear.y, (float)ang.y);
-
+        //船に、このフレームでの速度を与える
         rb.velocity = new Vector3(world_vel.x, world_vel.y, world_vel.z);
-
         rb.angularVelocity = new Vector3(0f, (float)msg.angular.z, 0f);
 
+        //移動後の船の位置、姿勢、速度、角速度を取得
         Vector3 ship_pos = rb.transform.position;
-        Vector3 ship_ang = rb.transform.localEulerAngles;
+        Vector3 ship_ang = rb.transform.eulerAngles;
 
         Vector3Msg position = new Vector3Msg(0f, 0f, 0f);
         Vector3Msg attitude = new Vector3Msg(0f, 0f, 0f);
-
         position.x = ship_pos.z;
         position.y = ship_pos.x;
         attitude.z = ship_ang.y;
-
         TwistMsg obs_pose = new TwistMsg(position, attitude);
 
         Vector3 ship_vel = rb.velocity;
         Vector3Msg velocity = new Vector3Msg((float)ship_vel.z, (float)ship_vel.x, (float)ship_vel.y);
-        Vector3Msg angularVelocity = new Vector3Msg((float)msg.angular.x, (float)msg.angular.y, (float)msg.angular.z);
+
+        Vector3 ship_ang_vel = rb.angularVelocity;
+        Vector3Msg angularVelocity = new Vector3Msg((float)ship_ang_vel.z, (float)ship_ang_vel.x, (float)ship_ang_vel.y);
 
         TwistMsg obs_vel = new TwistMsg(velocity, angularVelocity);
 
