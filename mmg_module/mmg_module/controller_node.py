@@ -46,10 +46,10 @@ class MmgControllerNode(Node):
 
 
     def sender_callback(self):
-        msg=Control()
-        msg.n_p=self.n_p
-        msg.rudder_angle_degree=self.rudder_angle_degree
-        self.publisher.publish(msg)
+        self.msg=Control()
+        self.msg.n_p=self.n_p
+        self.msg.rudder_angle_degree=self.rudder_angle_degree
+        self.publisher.publish(self.msg)
         self.get_logger().info('`Publish: n_p="%s", rudder_angle="%s"'%(self.msg.n_p,self.msg.rudder_angle_degree))
 
 
