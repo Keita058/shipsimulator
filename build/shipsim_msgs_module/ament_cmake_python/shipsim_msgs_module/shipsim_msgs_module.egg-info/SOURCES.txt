@@ -1,0 +1,8 @@
+setup.py
+shipsim_msgs_module/__init__.py
+shipsim_msgs_module.egg-info/PKG-INFO
+shipsim_msgs_module.egg-info/SOURCES.txt
+shipsim_msgs_module.egg-info/dependency_links.txt
+shipsim_msgs_module.egg-info/top_level.txt
+shipsim_msgs_module/msg/__init__.py
+shipsim_msgs_module/msg/_control.py

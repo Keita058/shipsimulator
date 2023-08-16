@@ -1,0 +1,39 @@
+[1.687s] Invoking command in '/home/tabuchi/shipsimulator/src/sensor_module': PYTHONPATH=/home/tabuchi/shipsimulator/build/sensor_module/prefix_override:/home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/sensor_module build --build-base /home/tabuchi/shipsimulator/build/sensor_module/build install --record /home/tabuchi/shipsimulator/build/sensor_module/install.log --single-version-externally-managed
+[1.944s] running egg_info
+[1.944s] creating ../../build/sensor_module/sensor_module.egg-info
+[1.945s] writing ../../build/sensor_module/sensor_module.egg-info/PKG-INFO
+[1.945s] writing dependency_links to ../../build/sensor_module/sensor_module.egg-info/dependency_links.txt
+[1.945s] writing entry points to ../../build/sensor_module/sensor_module.egg-info/entry_points.txt
+[1.945s] writing requirements to ../../build/sensor_module/sensor_module.egg-info/requires.txt
+[1.945s] writing top-level names to ../../build/sensor_module/sensor_module.egg-info/top_level.txt
+[1.946s] writing manifest file '../../build/sensor_module/sensor_module.egg-info/SOURCES.txt'
+[1.947s] reading manifest file '../../build/sensor_module/sensor_module.egg-info/SOURCES.txt'
+[1.948s] writing manifest file '../../build/sensor_module/sensor_module.egg-info/SOURCES.txt'
+[1.948s] running build
+[1.949s] running build_py
+[1.949s] creating /home/tabuchi/shipsimulator/build/sensor_module/build
+[1.949s] creating /home/tabuchi/shipsimulator/build/sensor_module/build/lib
+[1.949s] creating /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module
+[1.949s] copying sensor_module/__init__.py -> /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module
+[1.949s] copying sensor_module/sensor_node.py -> /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module
+[1.950s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.950s]   warnings.warn(
+[1.950s] running install
+[1.950s] running install_lib
+[1.951s] creating /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module
+[1.951s] copying /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module/__init__.py -> /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module
+[1.951s] copying /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module/sensor_node.py -> /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module
+[1.952s] byte-compiling /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module/__init__.py to __init__.cpython-310.pyc
+[1.952s] byte-compiling /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module/sensor_node.py to sensor_node.cpython-310.pyc
+[1.953s] running install_data
+[1.953s] creating /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index
+[1.953s] creating /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index/resource_index
+[1.954s] creating /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index/resource_index/packages
+[1.954s] copying resource/sensor_module -> /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index/resource_index/packages
+[1.954s] copying package.xml -> /home/tabuchi/shipsimulator/install/sensor_module/share/sensor_module
+[1.954s] running install_egg_info
+[1.956s] Copying ../../build/sensor_module/sensor_module.egg-info to /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module-0.0.0-py3.10.egg-info
+[1.957s] running install_scripts
+[1.989s] Installing sensor_node script to /home/tabuchi/shipsimulator/install/sensor_module/lib/sensor_module
+[1.990s] writing list of installed files to '/home/tabuchi/shipsimulator/build/sensor_module/install.log'
+[2.022s] Invoked command in '/home/tabuchi/shipsimulator/src/sensor_module' returned '0': PYTHONPATH=/home/tabuchi/shipsimulator/build/sensor_module/prefix_override:/home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/sensor_module build --build-base /home/tabuchi/shipsimulator/build/sensor_module/build install --record /home/tabuchi/shipsimulator/build/sensor_module/install.log --single-version-externally-managed

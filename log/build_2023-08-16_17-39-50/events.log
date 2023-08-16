@@ -1,0 +1,511 @@
+[0.000000] (-) TimerEvent: {}
+[0.000361] (actuator_module) JobQueued: {'identifier': 'actuator_module', 'dependencies': OrderedDict()}
+[0.000424] (mmg_module) JobQueued: {'identifier': 'mmg_module', 'dependencies': OrderedDict()}
+[0.000481] (ros_tcp_endpoint) JobQueued: {'identifier': 'ros_tcp_endpoint', 'dependencies': OrderedDict()}
+[0.000513] (sensor_module) JobQueued: {'identifier': 'sensor_module', 'dependencies': OrderedDict()}
+[0.000533] (shipsim_msgs_module) JobQueued: {'identifier': 'shipsim_msgs_module', 'dependencies': OrderedDict()}
+[0.000551] (actuator_module) JobStarted: {'identifier': 'actuator_module'}
+[0.009065] (mmg_module) JobStarted: {'identifier': 'mmg_module'}
+[0.015864] (ros_tcp_endpoint) JobStarted: {'identifier': 'ros_tcp_endpoint'}
+[0.025642] (sensor_module) JobStarted: {'identifier': 'sensor_module'}
+[0.032231] (shipsim_msgs_module) JobStarted: {'identifier': 'shipsim_msgs_module'}
+[0.098782] (-) TimerEvent: {}
+[0.199267] (-) TimerEvent: {}
+[0.299773] (-) TimerEvent: {}
+[0.400138] (-) TimerEvent: {}
+[0.500396] (-) TimerEvent: {}
+[0.600724] (-) TimerEvent: {}
+[0.700986] (-) TimerEvent: {}
+[0.801274] (-) TimerEvent: {}
+[0.901719] (-) TimerEvent: {}
+[1.001999] (-) TimerEvent: {}
+[1.102265] (-) TimerEvent: {}
+[1.202605] (-) TimerEvent: {}
+[1.291043] (shipsim_msgs_module) JobProgress: {'identifier': 'shipsim_msgs_module', 'progress': 'cmake'}
+[1.291436] (shipsim_msgs_module) Command: {'cmd': ['/usr/bin/cmake', '/home/tabuchi/shipsimulator/src/shipsim_msgs_module', '-DCMAKE_INSTALL_PREFIX=/home/tabuchi/shipsimulator/install/shipsim_msgs_module'], 'cwd': '/home/tabuchi/shipsimulator/build/shipsim_msgs_module', 'env': OrderedDict([('SUDO_GID', '1000'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('MAIL', '/var/mail/root'), ('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('LC_TIME', 'ja_JP.UTF-8'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ja_JP.UTF-8'), ('COLORTERM', 'truecolor'), ('SUDO_UID', '1000'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('LC_ADDRESS', 'ja_JP.UTF-8'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ja_JP.UTF-8'), ('XAUTHORITY', '/home/tabuchi/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/bin/bash'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ja_JP.UTF-8'), ('SUDO_USER', 'tabuchi'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ja_JP.UTF-8'), ('LC_IDENTIFICATION', 'ja_JP.UTF-8'), ('PWD', '/home/tabuchi/shipsimulator/build/shipsim_msgs_module'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ja_JP.UTF-8'), ('LC_PAPER', 'ja_JP.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[1.302691] (-) TimerEvent: {}
+[1.374998] (shipsim_msgs_module) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.402814] (-) TimerEvent: {}
+[1.463977] (shipsim_msgs_module) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.473926] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.502917] (-) TimerEvent: {}
+[1.538438] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.553523] (shipsim_msgs_module) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.553924] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.554483] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.558196] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.603038] (-) TimerEvent: {}
+[1.637467] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.647213] (shipsim_msgs_module) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.647512] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.648012] (shipsim_msgs_module) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.650477] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.698135] (actuator_module) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/actuator_module', 'build', '--build-base', '/home/tabuchi/shipsimulator/build/actuator_module/build', 'install', '--record', '/home/tabuchi/shipsimulator/build/actuator_module/install.log', '--single-version-externally-managed'], 'cwd': '/home/tabuchi/shipsimulator/src/actuator_module', 'env': {'SUDO_GID': '1000', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'MAIL': '/var/mail/root', 'LANGUAGE': 'en_US:en', 'USER': 'root', 'LC_TIME': 'ja_JP.UTF-8', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'ja_JP.UTF-8', 'COLORTERM': 'truecolor', 'SUDO_UID': '1000', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin', 'LC_ADDRESS': 'ja_JP.UTF-8', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ja_JP.UTF-8', 'XAUTHORITY': '/home/tabuchi/.Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/bin/bash', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'ja_JP.UTF-8', 'SUDO_USER': 'tabuchi', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ja_JP.UTF-8', 'LC_IDENTIFICATION': 'ja_JP.UTF-8', 'PWD': '/home/tabuchi/shipsimulator/build/actuator_module', 'LC_ALL': 'en_US.UTF-8', 'PYTHONPATH': '/home/tabuchi/shipsimulator/build/actuator_module/prefix_override:/home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'ja_JP.UTF-8', 'LC_PAPER': 'ja_JP.UTF-8', 'COLCON': '1'}, 'shell': False}
+[1.703146] (-) TimerEvent: {}
+[1.711406] (sensor_module) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/sensor_module', 'build', '--build-base', '/home/tabuchi/shipsimulator/build/sensor_module/build', 'install', '--record', '/home/tabuchi/shipsimulator/build/sensor_module/install.log', '--single-version-externally-managed'], 'cwd': '/home/tabuchi/shipsimulator/src/sensor_module', 'env': {'SUDO_GID': '1000', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'MAIL': '/var/mail/root', 'LANGUAGE': 'en_US:en', 'USER': 'root', 'LC_TIME': 'ja_JP.UTF-8', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'ja_JP.UTF-8', 'COLORTERM': 'truecolor', 'SUDO_UID': '1000', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin', 'LC_ADDRESS': 'ja_JP.UTF-8', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ja_JP.UTF-8', 'XAUTHORITY': '/home/tabuchi/.Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/bin/bash', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'ja_JP.UTF-8', 'SUDO_USER': 'tabuchi', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ja_JP.UTF-8', 'LC_IDENTIFICATION': 'ja_JP.UTF-8', 'PWD': '/home/tabuchi/shipsimulator/build/sensor_module', 'LC_ALL': 'en_US.UTF-8', 'PYTHONPATH': '/home/tabuchi/shipsimulator/build/sensor_module/prefix_override:/home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'ja_JP.UTF-8', 'LC_PAPER': 'ja_JP.UTF-8', 'COLCON': '1'}, 'shell': False}
+[1.729293] (ros_tcp_endpoint) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/ros_tcp_endpoint', 'build', '--build-base', '/home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build', 'install', '--record', '/home/tabuchi/shipsimulator/build/ros_tcp_endpoint/install.log', '--install-scripts', '$base/lib/ros_tcp_endpoint', '--single-version-externally-managed'], 'cwd': '/home/tabuchi/shipsimulator/src/ROS-TCP-Endpoint', 'env': {'SUDO_GID': '1000', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'MAIL': '/var/mail/root', 'LANGUAGE': 'en_US:en', 'USER': 'root', 'LC_TIME': 'ja_JP.UTF-8', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'ja_JP.UTF-8', 'COLORTERM': 'truecolor', 'SUDO_UID': '1000', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin', 'LC_ADDRESS': 'ja_JP.UTF-8', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ja_JP.UTF-8', 'XAUTHORITY': '/home/tabuchi/.Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/bin/bash', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'ja_JP.UTF-8', 'SUDO_USER': 'tabuchi', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ja_JP.UTF-8', 'LC_IDENTIFICATION': 'ja_JP.UTF-8', 'PWD': '/home/tabuchi/shipsimulator/build/ros_tcp_endpoint', 'LC_ALL': 'en_US.UTF-8', 'PYTHONPATH': '/home/tabuchi/shipsimulator/build/ros_tcp_endpoint/prefix_override:/home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'ja_JP.UTF-8', 'LC_PAPER': 'ja_JP.UTF-8', 'COLCON': '1'}, 'shell': False}
+[1.749099] (mmg_module) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/mmg_module', 'build', '--build-base', '/home/tabuchi/shipsimulator/build/mmg_module/build', 'install', '--record', '/home/tabuchi/shipsimulator/build/mmg_module/install.log', '--single-version-externally-managed'], 'cwd': '/home/tabuchi/shipsimulator/src/mmg_module', 'env': {'SUDO_GID': '1000', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'MAIL': '/var/mail/root', 'LANGUAGE': 'en_US:en', 'USER': 'root', 'LC_TIME': 'ja_JP.UTF-8', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'ja_JP.UTF-8', 'COLORTERM': 'truecolor', 'SUDO_UID': '1000', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin', 'LC_ADDRESS': 'ja_JP.UTF-8', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'ja_JP.UTF-8', 'XAUTHORITY': '/home/tabuchi/.Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/bin/bash', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'ja_JP.UTF-8', 'SUDO_USER': 'tabuchi', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'ja_JP.UTF-8', 'LC_IDENTIFICATION': 'ja_JP.UTF-8', 'PWD': '/home/tabuchi/shipsimulator/build/mmg_module', 'LC_ALL': 'en_US.UTF-8', 'PYTHONPATH': '/home/tabuchi/shipsimulator/build/mmg_module/prefix_override:/home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'ja_JP.UTF-8', 'LC_PAPER': 'ja_JP.UTF-8', 'COLCON': '1'}, 'shell': False}
+[1.803244] (-) TimerEvent: {}
+[1.807311] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found Python3: /usr/local/bin/python3.10 (found version "3.10.4") found components: Interpreter \n'}
+[1.903358] (-) TimerEvent: {}
+[1.922749] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.927803] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.937970] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.969143] (sensor_module) StdoutLine: {'line': b'running egg_info\n'}
+[1.969875] (sensor_module) StdoutLine: {'line': b'creating ../../build/sensor_module/sensor_module.egg-info\n'}
+[1.970107] (sensor_module) StdoutLine: {'line': b'writing ../../build/sensor_module/sensor_module.egg-info/PKG-INFO\n'}
+[1.970407] (sensor_module) StdoutLine: {'line': b'writing dependency_links to ../../build/sensor_module/sensor_module.egg-info/dependency_links.txt\n'}
+[1.970593] (sensor_module) StdoutLine: {'line': b'writing entry points to ../../build/sensor_module/sensor_module.egg-info/entry_points.txt\n'}
+[1.970796] (sensor_module) StdoutLine: {'line': b'writing requirements to ../../build/sensor_module/sensor_module.egg-info/requires.txt\n'}
+[1.970929] (sensor_module) StdoutLine: {'line': b'writing top-level names to ../../build/sensor_module/sensor_module.egg-info/top_level.txt\n'}
+[1.971151] (sensor_module) StdoutLine: {'line': b"writing manifest file '../../build/sensor_module/sensor_module.egg-info/SOURCES.txt'\n"}
+[1.972992] (sensor_module) StdoutLine: {'line': b"reading manifest file '../../build/sensor_module/sensor_module.egg-info/SOURCES.txt'\n"}
+[1.973828] (sensor_module) StdoutLine: {'line': b"writing manifest file '../../build/sensor_module/sensor_module.egg-info/SOURCES.txt'\n"}
+[1.974046] (sensor_module) StdoutLine: {'line': b'running build\n'}
+[1.974201] (sensor_module) StdoutLine: {'line': b'running build_py\n'}
+[1.974421] (sensor_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/sensor_module/build\n'}
+[1.974592] (sensor_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/sensor_module/build/lib\n'}
+[1.974732] (sensor_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module\n'}
+[1.974873] (sensor_module) StdoutLine: {'line': b'copying sensor_module/__init__.py -> /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module\n'}
+[1.975010] (sensor_module) StdoutLine: {'line': b'copying sensor_module/sensor_node.py -> /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module\n'}
+[1.975225] (sensor_module) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.975380] (sensor_module) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.975545] (sensor_module) StdoutLine: {'line': b'running install\n'}
+[1.975672] (sensor_module) StdoutLine: {'line': b'running install_lib\n'}
+[1.976332] (sensor_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module\n'}
+[1.976517] (sensor_module) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module/__init__.py -> /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module\n'}
+[1.976690] (sensor_module) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/sensor_module/build/lib/sensor_module/sensor_node.py -> /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module\n'}
+[1.977249] (sensor_module) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module/__init__.py to __init__.cpython-310.pyc\n'}
+[1.977558] (sensor_module) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module/sensor_node.py to sensor_node.cpython-310.pyc\n'}
+[1.978138] (sensor_module) StdoutLine: {'line': b'running install_data\n'}
+[1.978797] (sensor_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index\n'}
+[1.979016] (sensor_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index/resource_index\n'}
+[1.979217] (sensor_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index/resource_index/packages\n'}
+[1.979345] (sensor_module) StdoutLine: {'line': b'copying resource/sensor_module -> /home/tabuchi/shipsimulator/install/sensor_module/share/ament_index/resource_index/packages\n'}
+[1.979473] (sensor_module) StdoutLine: {'line': b'copying package.xml -> /home/tabuchi/shipsimulator/install/sensor_module/share/sensor_module\n'}
+[1.979606] (sensor_module) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.979920] (ros_tcp_endpoint) StderrLine: {'line': b"/usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead\n"}
+[1.980129] (ros_tcp_endpoint) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.981701] (sensor_module) StdoutLine: {'line': b'Copying ../../build/sensor_module/sensor_module.egg-info to /home/tabuchi/shipsimulator/install/sensor_module/lib/python3.10/site-packages/sensor_module-0.0.0-py3.10.egg-info\n'}
+[1.982809] (sensor_module) StdoutLine: {'line': b'running install_scripts\n'}
+[1.989920] (ros_tcp_endpoint) StdoutLine: {'line': b'running egg_info\n'}
+[1.990562] (ros_tcp_endpoint) StdoutLine: {'line': b'creating ../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info\n'}
+[1.990772] (ros_tcp_endpoint) StdoutLine: {'line': b'writing ../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/PKG-INFO\n'}
+[1.990958] (ros_tcp_endpoint) StdoutLine: {'line': b'writing dependency_links to ../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/dependency_links.txt\n'}
+[1.991143] (ros_tcp_endpoint) StdoutLine: {'line': b'writing entry points to ../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/entry_points.txt\n'}
+[1.991311] (ros_tcp_endpoint) StdoutLine: {'line': b'writing requirements to ../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/requires.txt\n'}
+[1.991477] (ros_tcp_endpoint) StdoutLine: {'line': b'writing top-level names to ../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/top_level.txt\n'}
+[1.991650] (ros_tcp_endpoint) StdoutLine: {'line': b"writing manifest file '../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/SOURCES.txt'\n"}
+[1.993543] (ros_tcp_endpoint) StdoutLine: {'line': b"reading manifest file '../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/SOURCES.txt'\n"}
+[1.993798] (ros_tcp_endpoint) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[1.994588] (ros_tcp_endpoint) StdoutLine: {'line': b"writing manifest file '../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info/SOURCES.txt'\n"}
+[1.994932] (ros_tcp_endpoint) StdoutLine: {'line': b'running build\n'}
+[1.995143] (ros_tcp_endpoint) StdoutLine: {'line': b'running build_py\n'}
+[1.995500] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build\n'}
+[1.995757] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib\n'}
+[1.995922] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.996078] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/publisher.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.996236] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/server.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.996427] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/exceptions.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.996682] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/__init__.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.996904] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/thread_pauser.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.997068] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/unity_service.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.997221] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/communication.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.997377] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/default_server_endpoint.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.997521] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/tcp_sender.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.997669] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/service.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.997917] (ros_tcp_endpoint) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.998070] (ros_tcp_endpoint) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.998250] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/client.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.998396] (ros_tcp_endpoint) StdoutLine: {'line': b'copying ros_tcp_endpoint/subscriber.py -> /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint\n'}
+[1.998522] (ros_tcp_endpoint) StdoutLine: {'line': b'running install\n'}
+[1.998642] (ros_tcp_endpoint) StdoutLine: {'line': b'running install_lib\n'}
+[1.999265] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[1.999521] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/publisher.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[1.999692] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/server.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[1.999886] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/exceptions.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.000078] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/__init__.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.000268] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/thread_pauser.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.000520] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/unity_service.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.000733] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/communication.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.000925] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/default_server_endpoint.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.001080] (actuator_module) StdoutLine: {'line': b'running egg_info\n'}
+[2.001287] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/tcp_sender.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.001437] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/service.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.001585] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/client.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.001732] (ros_tcp_endpoint) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/ros_tcp_endpoint/build/lib/ros_tcp_endpoint/subscriber.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint\n'}
+[2.002003] (actuator_module) StdoutLine: {'line': b'creating ../../build/actuator_module/actuator_module.egg-info\n'}
+[2.002207] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/publisher.py to publisher.cpython-310.pyc\n'}
+[2.002454] (actuator_module) StdoutLine: {'line': b'writing ../../build/actuator_module/actuator_module.egg-info/PKG-INFO\n'}
+[2.002630] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/server.py to server.cpython-310.pyc\n'}
+[2.002803] (actuator_module) StdoutLine: {'line': b'writing dependency_links to ../../build/actuator_module/actuator_module.egg-info/dependency_links.txt\n'}
+[2.002958] (actuator_module) StdoutLine: {'line': b'writing entry points to ../../build/actuator_module/actuator_module.egg-info/entry_points.txt\n'}
+[2.003107] (actuator_module) StdoutLine: {'line': b'writing requirements to ../../build/actuator_module/actuator_module.egg-info/requires.txt\n'}
+[2.003307] (actuator_module) StdoutLine: {'line': b'writing top-level names to ../../build/actuator_module/actuator_module.egg-info/top_level.txt\n'}
+[2.003447] (-) TimerEvent: {}
+[2.003629] (actuator_module) StdoutLine: {'line': b"writing manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'\n"}
+[2.004516] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/exceptions.py to exceptions.cpython-310.pyc\n'}
+[2.004816] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/__init__.py to __init__.cpython-310.pyc\n'}
+[2.005017] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/thread_pauser.py to thread_pauser.cpython-310.pyc\n'}
+[2.005334] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/unity_service.py to unity_service.cpython-310.pyc\n'}
+[2.005760] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/communication.py to communication.cpython-310.pyc\n'}
+[2.006110] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/default_server_endpoint.py to default_server_endpoint.cpython-310.pyc\n'}
+[2.006335] (actuator_module) StdoutLine: {'line': b"reading manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'\n"}
+[2.006540] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/tcp_sender.py to tcp_sender.cpython-310.pyc\n'}
+[2.007723] (actuator_module) StdoutLine: {'line': b"writing manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'\n"}
+[2.007927] (actuator_module) StdoutLine: {'line': b'running build\n'}
+[2.008083] (actuator_module) StdoutLine: {'line': b'running build_py\n'}
+[2.008339] (actuator_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/actuator_module/build\n'}
+[2.008514] (actuator_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/actuator_module/build/lib\n'}
+[2.008745] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/service.py to service.cpython-310.pyc\n'}
+[2.008934] (actuator_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module\n'}
+[2.009084] (actuator_module) StdoutLine: {'line': b'copying actuator_module/actuator_node.py -> /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module\n'}
+[2.009272] (actuator_module) StdoutLine: {'line': b'copying actuator_module/__init__.py -> /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module\n'}
+[2.009419] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/client.py to client.cpython-310.pyc\n'}
+[2.009591] (actuator_module) StdoutLine: {'line': b'running install\n'}
+[2.009720] (actuator_module) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[2.009868] (actuator_module) StderrLine: {'line': b'  warnings.warn(\n'}
+[2.010006] (actuator_module) StdoutLine: {'line': b'running install_lib\n'}
+[2.010197] (ros_tcp_endpoint) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint/subscriber.py to subscriber.cpython-310.pyc\n'}
+[2.010684] (ros_tcp_endpoint) StdoutLine: {'line': b'running install_data\n'}
+[2.010890] (actuator_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module\n'}
+[2.011106] (actuator_module) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module/actuator_node.py -> /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module\n'}
+[2.011252] (actuator_module) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module/__init__.py -> /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module\n'}
+[2.011457] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/share/ament_index\n'}
+[2.011603] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/share/ament_index/resource_index\n'}
+[2.011796] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/share/ament_index/resource_index/packages\n'}
+[2.012024] (ros_tcp_endpoint) StdoutLine: {'line': b'copying resource/ros_tcp_endpoint -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/share/ament_index/resource_index/packages\n'}
+[2.012232] (ros_tcp_endpoint) StdoutLine: {'line': b'copying package.xml -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/share/ros_tcp_endpoint\n'}
+[2.012364] (ros_tcp_endpoint) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/share/ros_tcp_endpoint/launch\n'}
+[2.012490] (ros_tcp_endpoint) StdoutLine: {'line': b'copying launch/endpoint.py -> /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/share/ros_tcp_endpoint/launch\n'}
+[2.012613] (actuator_module) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module/actuator_node.py to actuator_node.cpython-310.pyc\n'}
+[2.012767] (ros_tcp_endpoint) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.013354] (actuator_module) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module/__init__.py to __init__.cpython-310.pyc\n'}
+[2.013580] (actuator_module) StdoutLine: {'line': b'running install_data\n'}
+[2.014080] (ros_tcp_endpoint) StdoutLine: {'line': b'Copying ../../build/ros_tcp_endpoint/ros_tcp_endpoint.egg-info to /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/python3.10/site-packages/ros_tcp_endpoint-0.0.1-py3.10.egg-info\n'}
+[2.014312] (sensor_module) StdoutLine: {'line': b'Installing sensor_node script to /home/tabuchi/shipsimulator/install/sensor_module/lib/sensor_module\n'}
+[2.014538] (actuator_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index\n'}
+[2.014743] (actuator_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index\n'}
+[2.014918] (actuator_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index/packages\n'}
+[2.015141] (sensor_module) StdoutLine: {'line': b"writing list of installed files to '/home/tabuchi/shipsimulator/build/sensor_module/install.log'\n"}
+[2.015303] (actuator_module) StdoutLine: {'line': b'copying resource/actuator_module -> /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index/packages\n'}
+[2.015455] (actuator_module) StdoutLine: {'line': b'copying package.xml -> /home/tabuchi/shipsimulator/install/actuator_module/share/actuator_module\n'}
+[2.015608] (actuator_module) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.015790] (mmg_module) StdoutLine: {'line': b'running egg_info\n'}
+[2.016016] (ros_tcp_endpoint) StdoutLine: {'line': b'running install_scripts\n'}
+[2.016169] (mmg_module) StdoutLine: {'line': b'creating ../../build/mmg_module/mmg_module.egg-info\n'}
+[2.016301] (mmg_module) StdoutLine: {'line': b'writing ../../build/mmg_module/mmg_module.egg-info/PKG-INFO\n'}
+[2.016459] (mmg_module) StdoutLine: {'line': b'writing dependency_links to ../../build/mmg_module/mmg_module.egg-info/dependency_links.txt\n'}
+[2.016639] (mmg_module) StdoutLine: {'line': b'writing entry points to ../../build/mmg_module/mmg_module.egg-info/entry_points.txt\n'}
+[2.016818] (mmg_module) StdoutLine: {'line': b'writing requirements to ../../build/mmg_module/mmg_module.egg-info/requires.txt\n'}
+[2.016949] (mmg_module) StdoutLine: {'line': b'writing top-level names to ../../build/mmg_module/mmg_module.egg-info/top_level.txt\n'}
+[2.017108] (mmg_module) StdoutLine: {'line': b"writing manifest file '../../build/mmg_module/mmg_module.egg-info/SOURCES.txt'\n"}
+[2.018040] (actuator_module) StdoutLine: {'line': b'Copying ../../build/actuator_module/actuator_module.egg-info to /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module-0.0.0-py3.10.egg-info\n'}
+[2.019245] (mmg_module) StdoutLine: {'line': b"reading manifest file '../../build/mmg_module/mmg_module.egg-info/SOURCES.txt'\n"}
+[2.019456] (actuator_module) StdoutLine: {'line': b'running install_scripts\n'}
+[2.019892] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.020088] (mmg_module) StdoutLine: {'line': b"writing manifest file '../../build/mmg_module/mmg_module.egg-info/SOURCES.txt'\n"}
+[2.020266] (mmg_module) StdoutLine: {'line': b'running build\n'}
+[2.020421] (mmg_module) StdoutLine: {'line': b'running build_py\n'}
+[2.020600] (mmg_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/mmg_module/build\n'}
+[2.020779] (mmg_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/mmg_module/build/lib\n'}
+[2.020950] (mmg_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module\n'}
+[2.021107] (mmg_module) StdoutLine: {'line': b'copying mmg_module/model_node.py -> /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module\n'}
+[2.021283] (mmg_module) StdoutLine: {'line': b'copying mmg_module/__init__.py -> /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module\n'}
+[2.021418] (mmg_module) StdoutLine: {'line': b'copying mmg_module/controller_node.py -> /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module\n'}
+[2.021547] (mmg_module) StdoutLine: {'line': b'running install\n'}
+[2.021697] (mmg_module) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[2.021844] (mmg_module) StderrLine: {'line': b'  warnings.warn(\n'}
+[2.021972] (mmg_module) StdoutLine: {'line': b'running install_lib\n'}
+[2.022470] (mmg_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module\n'}
+[2.022644] (mmg_module) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module/model_node.py -> /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module\n'}
+[2.022827] (mmg_module) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module/__init__.py -> /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module\n'}
+[2.022960] (mmg_module) StdoutLine: {'line': b'copying /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module/controller_node.py -> /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module\n'}
+[2.023318] (mmg_module) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module/model_node.py to model_node.cpython-310.pyc\n'}
+[2.025916] (mmg_module) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module/__init__.py to __init__.cpython-310.pyc\n'}
+[2.026185] (mmg_module) StdoutLine: {'line': b'byte-compiling /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module/controller_node.py to controller_node.cpython-310.pyc\n'}
+[2.026874] (mmg_module) StdoutLine: {'line': b'running install_data\n'}
+[2.027762] (mmg_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/mmg_module/share/ament_index\n'}
+[2.028067] (mmg_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/mmg_module/share/ament_index/resource_index\n'}
+[2.028254] (mmg_module) StdoutLine: {'line': b'creating /home/tabuchi/shipsimulator/install/mmg_module/share/ament_index/resource_index/packages\n'}
+[2.028392] (mmg_module) StdoutLine: {'line': b'copying resource/mmg_module -> /home/tabuchi/shipsimulator/install/mmg_module/share/ament_index/resource_index/packages\n'}
+[2.028527] (mmg_module) StdoutLine: {'line': b'copying package.xml -> /home/tabuchi/shipsimulator/install/mmg_module/share/mmg_module\n'}
+[2.028669] (mmg_module) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.030277] (mmg_module) StdoutLine: {'line': b'Copying ../../build/mmg_module/mmg_module.egg-info to /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module-0.0.0-py3.10.egg-info\n'}
+[2.031293] (mmg_module) StdoutLine: {'line': b'running install_scripts\n'}
+[2.042053] (ros_tcp_endpoint) StdoutLine: {'line': b'Installing default_server_endpoint script to /home/tabuchi/shipsimulator/install/ros_tcp_endpoint/lib/ros_tcp_endpoint\n'}
+[2.042651] (ros_tcp_endpoint) StdoutLine: {'line': b"writing list of installed files to '/home/tabuchi/shipsimulator/build/ros_tcp_endpoint/install.log'\n"}
+[2.047168] (sensor_module) CommandEnded: {'returncode': 0}
+[2.048993] (actuator_module) StdoutLine: {'line': b'Installing actuator_node script to /home/tabuchi/shipsimulator/install/actuator_module/lib/actuator_module\n'}
+[2.049243] (actuator_module) StdoutLine: {'line': b"writing list of installed files to '/home/tabuchi/shipsimulator/build/actuator_module/install.log'\n"}
+[2.059663] (mmg_module) StdoutLine: {'line': b'Installing controller_node script to /home/tabuchi/shipsimulator/install/mmg_module/lib/mmg_module\n'}
+[2.059887] (mmg_module) StdoutLine: {'line': b'Installing model_node script to /home/tabuchi/shipsimulator/install/mmg_module/lib/mmg_module\n'}
+[2.060001] (mmg_module) StdoutLine: {'line': b"writing list of installed files to '/home/tabuchi/shipsimulator/build/mmg_module/install.log'\n"}
+[2.064533] (sensor_module) JobEnded: {'identifier': 'sensor_module', 'rc': 0}
+[2.074743] (ros_tcp_endpoint) CommandEnded: {'returncode': 0}
+[2.083713] (ros_tcp_endpoint) JobEnded: {'identifier': 'ros_tcp_endpoint', 'rc': 0}
+[2.086825] (actuator_module) CommandEnded: {'returncode': 0}
+[2.095195] (actuator_module) JobEnded: {'identifier': 'actuator_module', 'rc': 0}
+[2.098592] (mmg_module) CommandEnded: {'returncode': 0}
+[2.104652] (-) TimerEvent: {}
+[2.106924] (mmg_module) JobEnded: {'identifier': 'mmg_module', 'rc': 0}
+[2.204783] (-) TimerEvent: {}
+[2.305163] (-) TimerEvent: {}
+[2.405593] (-) TimerEvent: {}
+[2.506050] (-) TimerEvent: {}
+[2.532890] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[2.606208] (-) TimerEvent: {}
+[2.706794] (-) TimerEvent: {}
+[2.807303] (-) TimerEvent: {}
+[2.907775] (-) TimerEvent: {}
+[2.992677] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.007946] (-) TimerEvent: {}
+[3.108405] (-) TimerEvent: {}
+[3.208837] (-) TimerEvent: {}
+[3.309311] (-) TimerEvent: {}
+[3.409864] (-) TimerEvent: {}
+[3.510398] (-) TimerEvent: {}
+[3.533432] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.583591] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found PythonInterp: /usr/local/bin/python3 (found suitable version "3.10.4", minimum required is "3.6") \n'}
+[3.586508] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[3.610536] (-) TimerEvent: {}
+[3.634064] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.4", minimum required is "3.5") \n'}
+[3.634553] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/local/bin/python3\n'}
+[3.634818] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/local/include/python3.10\n'}
+[3.635005] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[3.672701] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[3.710685] (-) TimerEvent: {}
+[3.811252] (-) TimerEvent: {}
+[3.912166] (-) TimerEvent: {}
+[4.012658] (-) TimerEvent: {}
+[4.101724] (shipsim_msgs_module) StdoutLine: {'line': b'-- Using numpy include directory: /usr/local/lib/python3.10/site-packages/numpy/core/include\n'}
+[4.112719] (-) TimerEvent: {}
+[4.116718] (shipsim_msgs_module) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.6 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[4.161674] (shipsim_msgs_module) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[4.163953] (shipsim_msgs_module) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.170117] (shipsim_msgs_module) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.212853] (-) TimerEvent: {}
+[4.231236] (shipsim_msgs_module) StdoutLine: {'line': b'-- Generating done\n'}
+[4.236578] (shipsim_msgs_module) StdoutLine: {'line': b'-- Build files have been written to: /home/tabuchi/shipsimulator/build/shipsim_msgs_module\n'}
+[4.247870] (shipsim_msgs_module) CommandEnded: {'returncode': 0}
+[4.249393] (shipsim_msgs_module) JobProgress: {'identifier': 'shipsim_msgs_module', 'progress': 'build'}
+[4.253051] (shipsim_msgs_module) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/tabuchi/shipsimulator/build/shipsim_msgs_module', '--', '-j12', '-l12'], 'cwd': '/home/tabuchi/shipsimulator/build/shipsim_msgs_module', 'env': OrderedDict([('SUDO_GID', '1000'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('MAIL', '/var/mail/root'), ('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('LC_TIME', 'ja_JP.UTF-8'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ja_JP.UTF-8'), ('COLORTERM', 'truecolor'), ('SUDO_UID', '1000'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('LC_ADDRESS', 'ja_JP.UTF-8'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ja_JP.UTF-8'), ('XAUTHORITY', '/home/tabuchi/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/bin/bash'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ja_JP.UTF-8'), ('SUDO_USER', 'tabuchi'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ja_JP.UTF-8'), ('LC_IDENTIFICATION', 'ja_JP.UTF-8'), ('PWD', '/home/tabuchi/shipsimulator/build/shipsim_msgs_module'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ja_JP.UTF-8'), ('LC_PAPER', 'ja_JP.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[4.305833] (shipsim_msgs_module) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[4.312957] (-) TimerEvent: {}
+[4.319729] (shipsim_msgs_module) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[4.336502] (shipsim_msgs_module) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_copy_shipsim_msgs_module\n'}
+[4.413127] (-) TimerEvent: {}
+[4.513688] (-) TimerEvent: {}
+[4.614171] (-) TimerEvent: {}
+[4.709861] (shipsim_msgs_module) StdoutLine: {'line': b'running egg_info\n'}
+[4.710562] (shipsim_msgs_module) StdoutLine: {'line': b'creating shipsim_msgs_module.egg-info\n'}
+[4.710913] (shipsim_msgs_module) StdoutLine: {'line': b'writing shipsim_msgs_module.egg-info/PKG-INFO\n'}
+[4.711161] (shipsim_msgs_module) StdoutLine: {'line': b'writing dependency_links to shipsim_msgs_module.egg-info/dependency_links.txt\n'}
+[4.711257] (shipsim_msgs_module) StdoutLine: {'line': b'writing top-level names to shipsim_msgs_module.egg-info/top_level.txt\n'}
+[4.711417] (shipsim_msgs_module) StdoutLine: {'line': b"writing manifest file 'shipsim_msgs_module.egg-info/SOURCES.txt'\n"}
+[4.713098] (shipsim_msgs_module) StdoutLine: {'line': b"reading manifest file 'shipsim_msgs_module.egg-info/SOURCES.txt'\n"}
+[4.713583] (shipsim_msgs_module) StdoutLine: {'line': b"writing manifest file 'shipsim_msgs_module.egg-info/SOURCES.txt'\n"}
+[4.714224] (-) TimerEvent: {}
+[4.737532] (shipsim_msgs_module) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_build_shipsim_msgs_module_egg\n'}
+[4.747017] (shipsim_msgs_module) StdoutLine: {'line': b'[  6%] Built target shipsim_msgs_module__cpp\n'}
+[4.755221] (shipsim_msgs_module) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.755380] (shipsim_msgs_module) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[4.755457] (shipsim_msgs_module) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.758392] (shipsim_msgs_module) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding C object CMakeFiles/shipsim_msgs_module__rosidl_generator_c.dir/rosidl_generator_c/shipsim_msgs_module/msg/detail/control__functions.c.o\x1b[0m\n'}
+[4.807812] (shipsim_msgs_module) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libshipsim_msgs_module__rosidl_generator_c.so\x1b[0m\n'}
+[4.814336] (-) TimerEvent: {}
+[4.838395] (shipsim_msgs_module) StdoutLine: {'line': b'[ 22%] Built target shipsim_msgs_module__rosidl_generator_c\n'}
+[4.847072] (shipsim_msgs_module) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[4.847356] (shipsim_msgs_module) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.847485] (shipsim_msgs_module) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.914450] (-) TimerEvent: {}
+[5.007884] (shipsim_msgs_module) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/shipsim_msgs_module/msg/control__type_support.cpp.o\x1b[0m\n'}
+[5.014560] (-) TimerEvent: {}
+[5.029532] (shipsim_msgs_module) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/shipsim_msgs_module/msg/detail/control__type_support.cpp.o\x1b[0m\n'}
+[5.042338] (shipsim_msgs_module) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/shipsim_msgs_module/msg/detail/dds_fastrtps/control__type_support.cpp.o\x1b[0m\n'}
+[5.110916] (shipsim_msgs_module) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_c.dir/rosidl_typesupport_c/shipsim_msgs_module/msg/control__type_support.cpp.o\x1b[0m\n'}
+[5.114674] (-) TimerEvent: {}
+[5.138012] (shipsim_msgs_module) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/shipsim_msgs_module/msg/detail/control__type_support_c.cpp.o\x1b[0m\n'}
+[5.138281] (shipsim_msgs_module) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding C object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/shipsim_msgs_module/msg/detail/control__type_support.c.o\x1b[0m\n'}
+[5.138979] (shipsim_msgs_module) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking CXX shared library libshipsim_msgs_module__rosidl_typesupport_c.so\x1b[0m\n'}
+[5.170141] (shipsim_msgs_module) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking C shared library libshipsim_msgs_module__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[5.179207] (shipsim_msgs_module) StdoutLine: {'line': b'[ 58%] Built target shipsim_msgs_module__rosidl_typesupport_c\n'}
+[5.200303] (shipsim_msgs_module) StdoutLine: {'line': b'[ 58%] Built target shipsim_msgs_module__rosidl_typesupport_introspection_c\n'}
+[5.214780] (-) TimerEvent: {}
+[5.298041] (shipsim_msgs_module) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libshipsim_msgs_module__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[5.314890] (-) TimerEvent: {}
+[5.334096] (shipsim_msgs_module) StdoutLine: {'line': b'[ 61%] Built target shipsim_msgs_module__rosidl_typesupport_cpp\n'}
+[5.408594] (shipsim_msgs_module) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX shared library libshipsim_msgs_module__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[5.415013] (-) TimerEvent: {}
+[5.439980] (shipsim_msgs_module) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library libshipsim_msgs_module__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[5.443182] (shipsim_msgs_module) StdoutLine: {'line': b'[ 67%] Built target shipsim_msgs_module__rosidl_typesupport_introspection_cpp\n'}
+[5.460776] (shipsim_msgs_module) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libshipsim_msgs_module__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[5.509664] (shipsim_msgs_module) StdoutLine: {'line': b'[ 70%] Built target shipsim_msgs_module__rosidl_typesupport_fastrtps_cpp\n'}
+[5.515103] (-) TimerEvent: {}
+[5.532949] (shipsim_msgs_module) StdoutLine: {'line': b'[ 70%] Built target shipsim_msgs_module__rosidl_typesupport_fastrtps_c\n'}
+[5.554119] (shipsim_msgs_module) StdoutLine: {'line': b'[ 70%] Built target shipsim_msgs_module\n'}
+[5.587361] (shipsim_msgs_module) StdoutLine: {'line': b'[ 74%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[5.615237] (-) TimerEvent: {}
+[5.715658] (-) TimerEvent: {}
+[5.816054] (-) TimerEvent: {}
+[5.916461] (-) TimerEvent: {}
+[6.016761] (-) TimerEvent: {}
+[6.036253] (shipsim_msgs_module) StdoutLine: {'line': b'[ 74%] Built target shipsim_msgs_module__py\n'}
+[6.050718] (shipsim_msgs_module) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/shipsim_msgs_module__rosidl_generator_py.dir/rosidl_generator_py/shipsim_msgs_module/msg/_control_s.c.o\x1b[0m\n'}
+[6.116931] (-) TimerEvent: {}
+[6.217354] (-) TimerEvent: {}
+[6.244198] (shipsim_msgs_module) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/shipsim_msgs_module/libshipsim_msgs_module__rosidl_generator_py.so\x1b[0m\n'}
+[6.317531] (-) TimerEvent: {}
+[6.319417] (shipsim_msgs_module) StdoutLine: {'line': b'[ 80%] Built target shipsim_msgs_module__rosidl_generator_py\n'}
+[6.362540] (shipsim_msgs_module) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding C object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/shipsim_msgs_module/_shipsim_msgs_module_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[6.363927] (shipsim_msgs_module) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/shipsim_msgs_module/_shipsim_msgs_module_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[6.365580] (shipsim_msgs_module) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/shipsim_msgs_module__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/shipsim_msgs_module/_shipsim_msgs_module_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[6.417707] (-) TimerEvent: {}
+[6.518307] (-) TimerEvent: {}
+[6.596855] (shipsim_msgs_module) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[6.597270] (shipsim_msgs_module) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[6.618491] (-) TimerEvent: {}
+[6.618999] (shipsim_msgs_module) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[6.674552] (shipsim_msgs_module) StdoutLine: {'line': b'[100%] Built target shipsim_msgs_module__rosidl_typesupport_c__pyext\n'}
+[6.678829] (shipsim_msgs_module) StdoutLine: {'line': b'[100%] Built target shipsim_msgs_module__rosidl_typesupport_fastrtps_c__pyext\n'}
+[6.699650] (shipsim_msgs_module) StdoutLine: {'line': b'[100%] Built target shipsim_msgs_module__rosidl_typesupport_introspection_c__pyext\n'}
+[6.718658] (-) TimerEvent: {}
+[6.726505] (shipsim_msgs_module) CommandEnded: {'returncode': 0}
+[6.818773] (-) TimerEvent: {}
+[6.847910] (shipsim_msgs_module) JobProgress: {'identifier': 'shipsim_msgs_module', 'progress': 'install'}
+[6.868908] (shipsim_msgs_module) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/tabuchi/shipsimulator/build/shipsim_msgs_module'], 'cwd': '/home/tabuchi/shipsimulator/build/shipsim_msgs_module', 'env': OrderedDict([('SUDO_GID', '1000'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('MAIL', '/var/mail/root'), ('LANGUAGE', 'en_US:en'), ('USER', 'root'), ('LC_TIME', 'ja_JP.UTF-8'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ja_JP.UTF-8'), ('COLORTERM', 'truecolor'), ('SUDO_UID', '1000'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('LC_ADDRESS', 'ja_JP.UTF-8'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ja_JP.UTF-8'), ('XAUTHORITY', '/home/tabuchi/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/bin/bash'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ja_JP.UTF-8'), ('SUDO_USER', 'tabuchi'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ja_JP.UTF-8'), ('LC_IDENTIFICATION', 'ja_JP.UTF-8'), ('PWD', '/home/tabuchi/shipsimulator/build/shipsim_msgs_module'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ja_JP.UTF-8'), ('LC_PAPER', 'ja_JP.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[6.886537] (shipsim_msgs_module) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[6.887080] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/ament_index/resource_index/rosidl_interfaces/shipsim_msgs_module\n'}
+[6.887545] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module\n'}
+[6.887884] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg\n'}
+[6.888334] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/control.h\n'}
+[6.888711] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/rosidl_generator_c__visibility_control.h\n'}
+[6.889076] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail\n'}
+[6.889331] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__struct.h\n'}
+[6.889518] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__type_support.h\n'}
+[6.889758] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__functions.h\n'}
+[6.889998] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__functions.c\n'}
+[6.890182] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/library_path.sh\n'}
+[6.890382] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/library_path.dsv\n'}
+[6.890610] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_generator_c.so\n'}
+[6.890943] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_generator_c.so" to ""\n'}
+[6.891322] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module\n'}
+[6.891527] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg\n'}
+[6.891778] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail\n'}
+[6.892010] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__rosidl_typesupport_fastrtps_c.h\n'}
+[6.892201] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[6.892402] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_fastrtps_c.so\n'}
+[6.892824] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[6.893087] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module\n'}
+[6.893194] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg\n'}
+[6.893254] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail\n'}
+[6.893326] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__rosidl_typesupport_introspection_c.h\n'}
+[6.893382] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__type_support.c\n'}
+[6.893441] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[6.893530] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_introspection_c.so\n'}
+[6.893598] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_introspection_c.so" to ""\n'}
+[6.893658] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_c.so\n'}
+[6.893768] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_c.so" to ""\n'}
+[6.893834] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module\n'}
+[6.893919] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg\n'}
+[6.893995] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/control.hpp\n'}
+[6.894102] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail\n'}
+[6.894330] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__struct.hpp\n'}
+[6.894490] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__traits.hpp\n'}
+[6.894604] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__builder.hpp\n'}
+[6.894733] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module\n'}
+[6.894875] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg\n'}
+[6.895030] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail\n'}
+[6.895176] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.895341] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/dds_fastrtps\n'}
+[6.895435] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[6.895513] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_fastrtps_cpp.so\n'}
+[6.895621] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[6.895692] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module\n'}
+[6.895766] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg\n'}
+[6.895911] (shipsim_msgs_module) StdoutLine: {'line': b'-- Up-to-date: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail\n'}
+[6.896015] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__type_support.cpp\n'}
+[6.896087] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/include/shipsim_msgs_module/shipsim_msgs_module/msg/detail/control__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.896191] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_introspection_cpp.so\n'}
+[6.896282] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[6.896400] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_cpp.so\n'}
+[6.896490] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_typesupport_cpp.so" to ""\n'}
+[6.896558] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/pythonpath.sh\n'}
+[6.896657] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/pythonpath.dsv\n'}
+[6.896760] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module-0.0.0-py3.10.egg-info\n'}
+[6.906364] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[6.906646] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[6.906766] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[6.906866] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[6.906964] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module\n'}
+[6.907068] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[6.907168] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/__init__.py\n'}
+[6.907245] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/_shipsim_msgs_module_s.ep.rosidl_typesupport_c.c\n'}
+[6.907337] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/_shipsim_msgs_module_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[6.907411] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/_shipsim_msgs_module_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[6.907488] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[6.907566] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[6.907627] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/msg\n'}
+[6.907684] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/msg/_control_s.c\n'}
+[6.907739] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/msg/_control.py\n'}
+[6.907795] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/msg/__init__.py\n'}
+[6.907850] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/libshipsim_msgs_module__rosidl_generator_py.so\n'}
+[6.918930] (-) TimerEvent: {}
+[6.938276] (shipsim_msgs_module) StdoutLine: {'line': b"Listing '/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module'...\n"}
+[6.938409] (shipsim_msgs_module) StdoutLine: {'line': b"Compiling '/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/__init__.py'...\n"}
+[6.938471] (shipsim_msgs_module) StdoutLine: {'line': b"Listing '/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/msg'...\n"}
+[6.938526] (shipsim_msgs_module) StdoutLine: {'line': b"Compiling '/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/msg/__init__.py'...\n"}
+[6.938598] (shipsim_msgs_module) StdoutLine: {'line': b"Compiling '/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/msg/_control.py'...\n"}
+[6.941991] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[6.942198] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[6.942437] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[6.942623] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[6.942737] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[6.942856] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/python3.10/site-packages/shipsim_msgs_module/shipsim_msgs_module_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[6.942971] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_generator_py.so\n'}
+[6.943152] (shipsim_msgs_module) StdoutLine: {'line': b'-- Set runtime path of "/home/tabuchi/shipsimulator/install/shipsim_msgs_module/lib/libshipsim_msgs_module__rosidl_generator_py.so" to ""\n'}
+[6.943250] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/msg/Control.idl\n'}
+[6.943329] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/msg/Control.msg\n'}
+[6.943401] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/ament_index/resource_index/package_run_dependencies/shipsim_msgs_module\n'}
+[6.943504] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/ament_index/resource_index/parent_prefix_path/shipsim_msgs_module\n'}
+[6.943642] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/ament_prefix_path.sh\n'}
+[6.943738] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/ament_prefix_path.dsv\n'}
+[6.943826] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/path.sh\n'}
+[6.943910] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/environment/path.dsv\n'}
+[6.943993] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/local_setup.bash\n'}
+[6.944077] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/local_setup.sh\n'}
+[6.944159] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/local_setup.zsh\n'}
+[6.944239] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/local_setup.dsv\n'}
+[6.944319] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/package.dsv\n'}
+[6.944422] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/ament_index/resource_index/packages/shipsim_msgs_module\n'}
+[6.944574] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_generator_cExport.cmake\n'}
+[6.944743] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_generator_cExport-noconfig.cmake\n'}
+[6.944850] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[6.944942] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[6.945071] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_introspection_cExport.cmake\n'}
+[6.945197] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[6.945316] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_cExport.cmake\n'}
+[6.945425] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[6.945545] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_generator_cppExport.cmake\n'}
+[6.945663] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[6.945820] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[6.945940] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[6.946051] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[6.946175] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_cppExport.cmake\n'}
+[6.946312] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_module__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[6.946417] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_generator_pyExport.cmake\n'}
+[6.946530] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/export_shipsim_msgs_module__rosidl_generator_pyExport-noconfig.cmake\n'}
+[6.946659] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/rosidl_cmake-extras.cmake\n'}
+[6.946775] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[6.946868] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[6.946967] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[6.947151] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[6.947421] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[6.947534] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[6.947730] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_moduleConfig.cmake\n'}
+[6.947931] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/cmake/shipsim_msgs_moduleConfig-version.cmake\n'}
+[6.948019] (shipsim_msgs_module) StdoutLine: {'line': b'-- Installing: /home/tabuchi/shipsimulator/install/shipsim_msgs_module/share/shipsim_msgs_module/package.xml\n'}
+[6.950591] (shipsim_msgs_module) CommandEnded: {'returncode': 0}
+[7.019176] (-) TimerEvent: {}
+[7.020510] (shipsim_msgs_module) JobEnded: {'identifier': 'shipsim_msgs_module', 'rc': 0}
+[7.021375] (-) EventReactorShutdown: {}

@@ -1,0 +1,27 @@
+[2.198s] Invoking command in '/home/tabuchi/shipsimulator/src/mmg_module': PYTHONPATH=/home/tabuchi/shipsimulator/build/mmg_module/prefix_override:/home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/mmg_module build --build-base /home/tabuchi/shipsimulator/build/mmg_module/build install --record /home/tabuchi/shipsimulator/build/mmg_module/install.log --single-version-externally-managed
+[2.486s] running egg_info
+[2.487s] writing ../../build/mmg_module/mmg_module.egg-info/PKG-INFO
+[2.487s] writing dependency_links to ../../build/mmg_module/mmg_module.egg-info/dependency_links.txt
+[2.487s] writing entry points to ../../build/mmg_module/mmg_module.egg-info/entry_points.txt
+[2.487s] writing requirements to ../../build/mmg_module/mmg_module.egg-info/requires.txt
+[2.487s] writing top-level names to ../../build/mmg_module/mmg_module.egg-info/top_level.txt
+[2.489s] reading manifest file '../../build/mmg_module/mmg_module.egg-info/SOURCES.txt'
+[2.490s] writing manifest file '../../build/mmg_module/mmg_module.egg-info/SOURCES.txt'
+[2.491s] running build
+[2.491s] running build_py
+[2.491s] copying mmg_module/controller_node.py -> /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module
+[2.491s] running install
+[2.492s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.492s]   warnings.warn(
+[2.492s] running install_lib
+[2.492s] copying /home/tabuchi/shipsimulator/build/mmg_module/build/lib/mmg_module/controller_node.py -> /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module
+[2.493s] byte-compiling /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module/controller_node.py to controller_node.cpython-310.pyc
+[2.495s] running install_data
+[2.496s] running install_egg_info
+[2.499s] removing '/home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module-0.0.0-py3.10.egg-info' (and everything under it)
+[2.499s] Copying ../../build/mmg_module/mmg_module.egg-info to /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module-0.0.0-py3.10.egg-info
+[2.501s] running install_scripts
+[2.532s] Installing controller_node script to /home/tabuchi/shipsimulator/install/mmg_module/lib/mmg_module
+[2.532s] Installing model_node script to /home/tabuchi/shipsimulator/install/mmg_module/lib/mmg_module
+[2.532s] writing list of installed files to '/home/tabuchi/shipsimulator/build/mmg_module/install.log'
+[2.566s] Invoked command in '/home/tabuchi/shipsimulator/src/mmg_module' returned '0': PYTHONPATH=/home/tabuchi/shipsimulator/build/mmg_module/prefix_override:/home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/mmg_module build --build-base /home/tabuchi/shipsimulator/build/mmg_module/build install --record /home/tabuchi/shipsimulator/build/mmg_module/install.log --single-version-externally-managed

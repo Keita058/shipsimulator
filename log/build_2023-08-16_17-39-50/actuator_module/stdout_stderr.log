@@ -1,0 +1,37 @@
+running egg_info
+creating ../../build/actuator_module/actuator_module.egg-info
+writing ../../build/actuator_module/actuator_module.egg-info/PKG-INFO
+writing dependency_links to ../../build/actuator_module/actuator_module.egg-info/dependency_links.txt
+writing entry points to ../../build/actuator_module/actuator_module.egg-info/entry_points.txt
+writing requirements to ../../build/actuator_module/actuator_module.egg-info/requires.txt
+writing top-level names to ../../build/actuator_module/actuator_module.egg-info/top_level.txt
+writing manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'
+reading manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'
+writing manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/tabuchi/shipsimulator/build/actuator_module/build
+creating /home/tabuchi/shipsimulator/build/actuator_module/build/lib
+creating /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module
+copying actuator_module/actuator_node.py -> /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module
+copying actuator_module/__init__.py -> /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+creating /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module
+copying /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module/actuator_node.py -> /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module
+copying /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module/__init__.py -> /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module
+byte-compiling /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module/actuator_node.py to actuator_node.cpython-310.pyc
+byte-compiling /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index
+creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index
+creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index/packages
+copying resource/actuator_module -> /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index/packages
+copying package.xml -> /home/tabuchi/shipsimulator/install/actuator_module/share/actuator_module
+running install_egg_info
+Copying ../../build/actuator_module/actuator_module.egg-info to /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module-0.0.0-py3.10.egg-info
+running install_scripts
+Installing actuator_node script to /home/tabuchi/shipsimulator/install/actuator_module/lib/actuator_module
+writing list of installed files to '/home/tabuchi/shipsimulator/build/actuator_module/install.log'

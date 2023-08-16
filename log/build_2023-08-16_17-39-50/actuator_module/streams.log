@@ -1,0 +1,39 @@
+[1.699s] Invoking command in '/home/tabuchi/shipsimulator/src/actuator_module': PYTHONPATH=/home/tabuchi/shipsimulator/build/actuator_module/prefix_override:/home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/actuator_module build --build-base /home/tabuchi/shipsimulator/build/actuator_module/build install --record /home/tabuchi/shipsimulator/build/actuator_module/install.log --single-version-externally-managed
+[2.001s] running egg_info
+[2.002s] creating ../../build/actuator_module/actuator_module.egg-info
+[2.002s] writing ../../build/actuator_module/actuator_module.egg-info/PKG-INFO
+[2.002s] writing dependency_links to ../../build/actuator_module/actuator_module.egg-info/dependency_links.txt
+[2.003s] writing entry points to ../../build/actuator_module/actuator_module.egg-info/entry_points.txt
+[2.003s] writing requirements to ../../build/actuator_module/actuator_module.egg-info/requires.txt
+[2.003s] writing top-level names to ../../build/actuator_module/actuator_module.egg-info/top_level.txt
+[2.003s] writing manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'
+[2.006s] reading manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'
+[2.007s] writing manifest file '../../build/actuator_module/actuator_module.egg-info/SOURCES.txt'
+[2.007s] running build
+[2.008s] running build_py
+[2.008s] creating /home/tabuchi/shipsimulator/build/actuator_module/build
+[2.008s] creating /home/tabuchi/shipsimulator/build/actuator_module/build/lib
+[2.008s] creating /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module
+[2.009s] copying actuator_module/actuator_node.py -> /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module
+[2.009s] copying actuator_module/__init__.py -> /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module
+[2.009s] running install
+[2.009s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.009s]   warnings.warn(
+[2.010s] running install_lib
+[2.010s] creating /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module
+[2.011s] copying /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module/actuator_node.py -> /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module
+[2.011s] copying /home/tabuchi/shipsimulator/build/actuator_module/build/lib/actuator_module/__init__.py -> /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module
+[2.012s] byte-compiling /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module/actuator_node.py to actuator_node.cpython-310.pyc
+[2.013s] byte-compiling /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module/__init__.py to __init__.cpython-310.pyc
+[2.013s] running install_data
+[2.014s] creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index
+[2.014s] creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index
+[2.015s] creating /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index/packages
+[2.015s] copying resource/actuator_module -> /home/tabuchi/shipsimulator/install/actuator_module/share/ament_index/resource_index/packages
+[2.015s] copying package.xml -> /home/tabuchi/shipsimulator/install/actuator_module/share/actuator_module
+[2.015s] running install_egg_info
+[2.018s] Copying ../../build/actuator_module/actuator_module.egg-info to /home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages/actuator_module-0.0.0-py3.10.egg-info
+[2.019s] running install_scripts
+[2.049s] Installing actuator_node script to /home/tabuchi/shipsimulator/install/actuator_module/lib/actuator_module
+[2.049s] writing list of installed files to '/home/tabuchi/shipsimulator/build/actuator_module/install.log'
+[2.087s] Invoked command in '/home/tabuchi/shipsimulator/src/actuator_module' returned '0': PYTHONPATH=/home/tabuchi/shipsimulator/build/actuator_module/prefix_override:/home/tabuchi/shipsimulator/install/actuator_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/actuator_module build --build-base /home/tabuchi/shipsimulator/build/actuator_module/build install --record /home/tabuchi/shipsimulator/build/actuator_module/install.log --single-version-externally-managed

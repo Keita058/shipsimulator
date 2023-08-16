@@ -22,7 +22,7 @@ class ActuatorNode(Node):
         self.declare_parameter("sub_delta_time", 0.1)
 
         self.declare_parameter("publish_address","/ship1/cmd_input")
-        self.declare_parameter("delta_time",0.01)
+        self.declare_parameter("delta_time",0.1)
         publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
         self.pub_actuator=self.create_publisher(Control, publish_address, 10)
         delta_time=self.get_parameter("delta_time").value

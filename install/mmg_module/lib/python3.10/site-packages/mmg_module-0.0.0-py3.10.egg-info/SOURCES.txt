@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+../../build/mmg_module/mmg_module.egg-info/PKG-INFO
+../../build/mmg_module/mmg_module.egg-info/SOURCES.txt
+../../build/mmg_module/mmg_module.egg-info/dependency_links.txt
+../../build/mmg_module/mmg_module.egg-info/entry_points.txt
+../../build/mmg_module/mmg_module.egg-info/requires.txt
+../../build/mmg_module/mmg_module.egg-info/top_level.txt
+../../build/mmg_module/mmg_module.egg-info/zip-safe
+mmg_module/__init__.py
+mmg_module/controller_node.py
+mmg_module/model_node.py
+resource/mmg_module
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

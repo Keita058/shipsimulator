@@ -76,7 +76,7 @@ class ModelNode(Node):
     publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
     self.pub_cmd_vel=self.create_publisher(Twist,publish_address,10)
 
-    self.declare_parameter("delta_time", 0.01)
+    self.declare_parameter("delta_time", 0.1)
     delta_time=self.get_parameter("delta_time").value
     self.timer=self.create_timer(delta_time,self.sender_callback)
 
