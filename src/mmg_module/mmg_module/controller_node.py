@@ -14,12 +14,18 @@ class MmgControllerNode(Node):
 
     def __init__(self):
         """init."""
-        super().__init__("controller", namespace="ship1")
+        super().__init__("controller")
 
         self.declare_parameter("subscribe_address","/joy")
         subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
         self.subscription=self.create_subscription(
             Joy, subscribe_address, self.listener_callback, 10
+        )
+
+        self.declare_parameter("subscribe_address2","/joy2")
+        subscribe_address2=(self.get_parameter("subscribe_address2").get_parameter_value().string_value)
+        self.subscription=self.create_subscription(
+            Joy, subscribe_address2, self.listener_callback, 10
         )
 
         self.declare_parameter("delta_time",0.1)
@@ -28,6 +34,13 @@ class MmgControllerNode(Node):
             self.get_parameter("publish_address").get_parameter_value().string_value
         )
         self.publisher = self.create_publisher(Control, publish_address, 10)
+
+        self.declare_parameter("publish_address2", "/ship2/control_input")
+        publish_address2 = (
+            self.get_parameter("publish_address2").get_parameter_value().string_value
+        )
+        self.publisher = self.create_publisher(Control, publish_address2, 10)
+
         delta_time=self.get_parameter("delta_time").value
         self.timer=self.create_timer(delta_time, self.sender_callback)
 

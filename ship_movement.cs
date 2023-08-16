@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
 using RosMessageTypes.Geometry;
+using ControlMsg = RosMessageTypes.ShipsimMsg.ControlMsg
 using System;
 
 public class ship_movement : MonoBehaviour
@@ -20,10 +21,10 @@ public class ship_movement : MonoBehaviour
         ros = ROSConnection.GetOrCreateInstance();
         rb = GetComponent<Rigidbody>();
         ros.Subscribe<TwistMsg>("/ship1/cmd_vel",OnSubscribe);
+        ros.Subscribe<ControlMsg>("/ship1/control_input",OnSubscribe2);
         ros.RegisterPublisher<TwistMsg>("/ship1/obs_pose");
         ros.RegisterPublisher<TwistMsg>("/ship1/obs_vel");
     }
-
     // Update is called once per frame
     void OnSubscribe(TwistMsg msg)
     {
@@ -59,6 +60,11 @@ public class ship_movement : MonoBehaviour
 
         Debug.Log($"Subscribe: u={msg.linear.x}, v={msg.linear.y}, r={msg.angular.z}");
         Debug.Log($"Publish: x={obs_pose.linear.x}, y={obs_pose.linear.y}, psi={obs_pose.angular.z}");
+    }
+
+    void OnSubscribe2(ControlMsg msg)
+    {
+        Debug.Log($"Subscribe: delta={msg.rudder_angle_degree}, n_p={msg.n_p}");
     }
 
     static Vector3 Rotate_local2World(float u, float v, float theta){
