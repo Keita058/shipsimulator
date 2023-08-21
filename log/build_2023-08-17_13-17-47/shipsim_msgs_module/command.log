@@ -1,0 +1,4 @@
+Invoking command in '/home/tabuchi/shipsimulator/build/shipsim_msgs_module': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tabuchi/shipsimulator/build/shipsim_msgs_module -- -j12 -l12
+Invoked command in '/home/tabuchi/shipsimulator/build/shipsim_msgs_module' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/tabuchi/shipsimulator/build/shipsim_msgs_module -- -j12 -l12
+Invoking command in '/home/tabuchi/shipsimulator/build/shipsim_msgs_module': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/tabuchi/shipsimulator/build/shipsim_msgs_module
+Invoked command in '/home/tabuchi/shipsimulator/build/shipsim_msgs_module' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/tabuchi/shipsimulator/build/shipsim_msgs_module

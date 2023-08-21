@@ -33,8 +33,13 @@ class MmgControllerNode(Node):
         self.timer=self.create_timer(delta_time, self.sender_callback)
 
     def listener_callback(self,data):
-        self.n_p += (data.axes[2]-data.axes[5])*0.5
+        if data.buttons[6] or data.buttons[7]:
+            self.n_p += (data.axes[2]-data.axes[5])*0.5
+
+        self.n_p +- (data.buttons[2]*5-data.buttons[0]*5)
+
         self.rudder_angle_degree += -data.axes[0]*0.3
+        self.rudder_angle_degree += (data.buttons[1]*5-data.buttons[3]*5)
 
         if self.n_p<0:
             self.n_p=0.0

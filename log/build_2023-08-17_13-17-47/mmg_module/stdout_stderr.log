@@ -1,0 +1,22 @@
+running egg_info
+writing ../../build/mmg_module/mmg_module.egg-info/PKG-INFO
+writing dependency_links to ../../build/mmg_module/mmg_module.egg-info/dependency_links.txt
+writing entry points to ../../build/mmg_module/mmg_module.egg-info/entry_points.txt
+writing requirements to ../../build/mmg_module/mmg_module.egg-info/requires.txt
+writing top-level names to ../../build/mmg_module/mmg_module.egg-info/top_level.txt
+reading manifest file '../../build/mmg_module/mmg_module.egg-info/SOURCES.txt'
+writing manifest file '../../build/mmg_module/mmg_module.egg-info/SOURCES.txt'
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/mmg_module/mmg_module.egg-info to /home/tabuchi/shipsimulator/install/mmg_module/lib/python3.10/site-packages/mmg_module-0.0.0-py3.10.egg-info
+running install_scripts
+Installing controller_node script to /home/tabuchi/shipsimulator/install/mmg_module/lib/mmg_module
+Installing model_node script to /home/tabuchi/shipsimulator/install/mmg_module/lib/mmg_module
+writing list of installed files to '/home/tabuchi/shipsimulator/build/mmg_module/install.log'
