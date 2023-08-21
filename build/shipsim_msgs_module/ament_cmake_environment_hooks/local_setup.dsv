@@ -1,4 +1,0 @@
-source;share/shipsim_msgs_module/environment/ament_prefix_path.sh
-source;share/shipsim_msgs_module/environment/library_path.sh
-source;share/shipsim_msgs_module/environment/path.sh
-source;share/shipsim_msgs_module/environment/pythonpath.sh

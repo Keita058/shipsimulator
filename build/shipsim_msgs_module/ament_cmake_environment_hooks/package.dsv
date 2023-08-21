@@ -1,4 +1,0 @@
-source;share/shipsim_msgs_module/local_setup.bash
-source;share/shipsim_msgs_module/local_setup.dsv
-source;share/shipsim_msgs_module/local_setup.sh
-source;share/shipsim_msgs_module/local_setup.zsh

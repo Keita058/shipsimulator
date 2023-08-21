@@ -1,6 +1,0 @@
-{
-  "package_name": "shipsim_msgs_module",
-  "non_idl_tuples": [
-    "/home/tabuchi/shipsimulator/src/shipsim_msgs_module:msg/Control.msg"
-  ]
-}
