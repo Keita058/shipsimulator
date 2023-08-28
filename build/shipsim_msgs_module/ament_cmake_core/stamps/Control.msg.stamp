@@ -1,2 +1,0 @@
-float64 n_p
-float64 rudder_angle_degree
