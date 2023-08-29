@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
 using RosMessageTypes.Geometry;
-using ControlMsg = RosMessageTypes.ShipsimMsg.ControlMsg
+using ControlMsg = RosMessageTypes.ShipsimMsgs.ControlMsg;
 using System;
 
 public class ship_movement : MonoBehaviour
@@ -21,21 +21,12 @@ public class ship_movement : MonoBehaviour
         ros = ROSConnection.GetOrCreateInstance();
         rb = GetComponent<Rigidbody>();
         ros.Subscribe<TwistMsg>("/ship1/cmd_vel",OnSubscribe);
-        ros.Subscribe<ControlMsg>("/ship1/control_input",OnSubscribe2);
         ros.RegisterPublisher<TwistMsg>("/ship1/obs_pose");
         ros.RegisterPublisher<TwistMsg>("/ship1/obs_vel");
     }
     // Update is called once per frame
-    void OnSubscribe(TwistMsg msg)
+    void Update()
     {
-        //現在の船の方位を取得
-        Vector3 ang = rb.transform.eulerAngles;
-        //船から見たX軸Y軸の速度からワールド座標系のX軸Y軸速度へ変換
-        Vector3 world_vel = Rotate_local2World((float)msg.linear.x, (float)msg.linear.y, (float)ang.y);
-        //船に、このフレームでの速度を与える
-        rb.velocity = new Vector3(world_vel.x, world_vel.y, world_vel.z);
-        rb.angularVelocity = new Vector3(0f, (float)msg.angular.z, 0f);
-
         //移動後の船の位置、姿勢、速度、角速度を取得
         Vector3 ship_pos = rb.transform.position;
         Vector3 ship_ang = rb.transform.eulerAngles;
@@ -57,14 +48,20 @@ public class ship_movement : MonoBehaviour
 
         ros.Publish("/ship1/obs_pose",obs_pose);
         ros.Publish("/ship1/obs_vel",obs_vel);
-
-        Debug.Log($"Subscribe: u={msg.linear.x}, v={msg.linear.y}, r={msg.angular.z}");
         Debug.Log($"Publish: x={obs_pose.linear.x}, y={obs_pose.linear.y}, psi={obs_pose.angular.z}");
     }
 
-    void OnSubscribe2(ControlMsg msg)
+    void OnSubscribe(TwistMsg msg)
     {
-        Debug.Log($"Subscribe: delta={msg.rudder_angle_degree}, n_p={msg.n_p}");
+        //現在の船の方位を取得
+        Vector3 ang = rb.transform.eulerAngles;
+        //船から見たX軸Y軸の速度からワールド座標系のX軸Y軸速度へ変換
+        Vector3 world_vel = Rotate_local2World((float)msg.linear.x, (float)msg.linear.y, (float)ang.y);
+        //船に、このフレームでの速度を与える
+        rb.velocity = new Vector3(world_vel.x, world_vel.y, world_vel.z);
+        rb.angularVelocity = new Vector3(0f, (float)msg.angular.z, 0f);
+
+        Debug.Log($"Subscribe: u={msg.linear.x}, v={msg.linear.y}, r={msg.angular.z}");
     }
 
     static Vector3 Rotate_local2World(float u, float v, float theta){
