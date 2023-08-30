@@ -4,16 +4,17 @@ from rclpy.node import Node
 from shipsim_msgs_module.msg import Control
 from geometry_msgs.msg import Twist
 import numpy as np
+from rclpy.executors import SingleThreadedExecutor
 
 class ModelNode(Node):
 
   cmd_vel_Twist=Twist()
 
-  n_p=0.0
-  rudder_angle_degree=0.0
-
-  def __init__(self):
-    super().__init__("model",namespace="ship1")
+  def __init__(self, ship_number):
+    super().__init__("model")
+    self.ship_number=ship_number
+    self.n_p=0.0
+    self.rudder_angle_degree=0.0
 
     self.declare_parameter("ρ", 1.025)
 
@@ -66,13 +67,13 @@ class ModelNode(Node):
     self.declare_parameter("N_rrr", -0.013)
 
 
-    self.declare_parameter("subscribe_address", "/ship1/cmd_input")
+    self.declare_parameter("subscribe_address", "/ship"+str(ship_number)+"/cmd_input")
     subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
     self.subscription=self.create_subscription(
       Control, subscribe_address, self.listener_callback, 10
     )
 
-    self.declare_parameter("publish_address", "/ship1/cmd_vel")
+    self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/cmd_vel")
     publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
     self.pub_cmd_vel=self.create_publisher(Twist,publish_address,10)
 
@@ -81,7 +82,7 @@ class ModelNode(Node):
     self.timer=self.create_timer(delta_time,self.sender_callback)
 
   def listener_callback(self,msg):
-    self.get_logger().info('Subscribe: n_p="%s", rudder_angle="%s"'%(msg.n_p, msg.rudder_angle_degree))
+    self.get_logger().info('ship_number[%s] Subscribe: n_p="%s", rudder_angle="%s"'%(self.ship_number, msg.n_p, msg.rudder_angle_degree))
     self.n_p=msg.n_p
     self.rudder_angle_degree=msg.rudder_angle_degree
 
@@ -101,7 +102,7 @@ class ModelNode(Node):
       delta_time,
     )
     self.pub_cmd_vel.publish(self.cmd_vel_Twist)
-    self.get_logger().info('Publish: u="%s", v="%s", r="%s"'%(self.cmd_vel_Twist.linear.x, self.cmd_vel_Twist.linear.y, self.cmd_vel_Twist.angular.z))
+    self.get_logger().info('ship_number[%s] Publish: u="%s", v="%s", r="%s"'%(self.ship_number, self.cmd_vel_Twist.linear.x, self.cmd_vel_Twist.linear.y, self.cmd_vel_Twist.angular.z))
 
 
   def get_twist_from_MMG(self, u_now, v_now, r_now, n_p, rudder_angle_degree, delta_time):
@@ -216,11 +217,18 @@ class ModelNode(Node):
 def main(args=None):
   rclpy.init(args=args)
 
-  node=ModelNode()
+  exec = SingleThreadedExecutor()
+  num_of_ships = int(input("Input number of ships: "))
+  nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
+  for ship_number in range(num_of_ships):
+      globals()[nodes[ship_number]] = ModelNode(ship_number+1)
+  for ship_number in range(num_of_ships):
+      exec.add_node(globals()[nodes[ship_number]])
+  exec.spin()
+  exec.shutdown()
+  for ship_number in range(num_of_ships):
+      globals()[nodes[ship_number]].destroy_node()
 
-  rclpy.spin(node)
-
-  node.destroy_node()
   rclpy.shutdown()
 
 if __name__=="__main__":

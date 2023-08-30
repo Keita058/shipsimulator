@@ -1,27 +1,27 @@
 import rclpy
 from rclpy.node import Node
 from shipsim_msgs_module.msg import Control
+from rclpy.executors import SingleThreadedExecutor
 
 class ActuatorNode(Node):
 
-    n_p=0.0
-    current_n_p=0.0
-    rudder_angle_degree=0.0
-    current_angle=0.0
+    def __init__(self, ship_number):
+        super().__init__("actuator")
+        self.ship_number=ship_number
+        self.n_p=0.0
+        self.current_n_p=0.0
+        self.rudder_angle_degree=0.0
+        self.current_angle=0.0
+        self.actuated_list={'n_p':[0.0],'rudder_angle':[0.0]}
 
-    actuated_list={'n_p':[current_n_p],'rudder_angle':[current_angle]}
-
-    def __init__(self):
-        super().__init__("actuator",namespace="ship1")
-
-        self.declare_parameter("subscribe_address","/ship1/control_input")
+        self.declare_parameter("subscribe_address","/ship"+str(ship_number)+"/control_input")
         subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
         self.subscription=self.create_subscription(
             Control, subscribe_address, self.listener_callback, 10
         )
         self.declare_parameter("sub_delta_time", 0.1)
 
-        self.declare_parameter("publish_address","/ship1/cmd_input")
+        self.declare_parameter("publish_address","/ship"+str(ship_number)+"/cmd_input")
         self.declare_parameter("delta_time",0.1)
         publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
         self.pub_actuator=self.create_publisher(Control, publish_address, 10)
@@ -29,7 +29,7 @@ class ActuatorNode(Node):
         self.timer=self.create_timer(delta_time, self.sender_callback)
 
     def listener_callback(self,msg):
-        self.get_logger().info('Subscribe: n_p="%s", rudder_angle="%s"'%(msg.n_p,msg.rudder_angle_degree))
+        self.get_logger().info('ship_nunmber[%s] Subscribe: n_p="%s", rudder_angle="%s"'%(self.ship_number,msg.n_p,msg.rudder_angle_degree))
         self.n_p=msg.n_p
         self.rudder_angle_degree=msg.rudder_angle_degree
 
@@ -40,7 +40,7 @@ class ActuatorNode(Node):
         self.pub_actuator_msg=self.actuated(self.n_p, self.rudder_angle_degree,sub_delta_time)
 
         self.pub_actuator.publish(self.pub_actuator_msg)
-        self.get_logger().info('Publish: n_p="%s", rudder_angle="%s"'%(self.pub_actuator_msg.n_p, self.pub_actuator_msg.rudder_angle_degree))
+        self.get_logger().info('ship_number[%s] Publish: n_p="%s", rudder_angle="%s"'%(self.ship_number, self.pub_actuator_msg.n_p, self.pub_actuator_msg.rudder_angle_degree))
 
     def actuated(self,n_p,rudder_angle,delta_time):
         actuated_msg=Control()
@@ -76,10 +76,20 @@ class ActuatorNode(Node):
 
 
 def main(args=None):
+    """Run main."""
     rclpy.init(args=args)
-    node=ActuatorNode()
-    rclpy.spin(node)
-    node.destroy_node()
+    exec = SingleThreadedExecutor()
+    num_of_ships = int(input("Input number of ships: "))
+    nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
+    for ship_number in range(num_of_ships):
+        globals()[nodes[ship_number]] = ActuatorNode(ship_number+1)
+    for ship_number in range(num_of_ships):
+        exec.add_node(globals()[nodes[ship_number]])
+    exec.spin()
+    exec.shutdown()
+    for ship_number in range(num_of_ships):
+        globals()[nodes[ship_number]].destroy_node()
+
     rclpy.shutdown()
 
 if __name__=="__main__":
