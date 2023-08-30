@@ -1,3 +1,1 @@
-# shipsimulator
-
-Repository of shiphandling simulators using Unity and ROS2
+# UnityとROS2を用いた船舶操縦シミュレーター
