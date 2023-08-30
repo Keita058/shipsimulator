@@ -1,4 +1,4 @@
-#buildした後似作成されるbuild, install, logフォルダの中身を全て無視する
+#buildした後に作成されるbuild, install, logフォルダの中身の変更を全て無視する
 build/
 install/
 log/
