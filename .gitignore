@@ -1,0 +1,4 @@
+#buildした後似作成されるbuild, install, logフォルダの中身を全て無視する
+build/
+install/
+log/
