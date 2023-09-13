@@ -3,9 +3,7 @@ import pandas as pd
 import re
 from rosidl_runtime_py.utilities import get_message
 from rclpy.serialization import deserialize_message
-import sys
-sys.path.append('/home/tabuchi/ros2_ws/src/')
-from shipsim_msgs_module.msg import Control
+import os
 
 
 class BagFileParser():
@@ -59,29 +57,38 @@ def control_to_csv(message, csv_file_name, cols):
     df.to_csv(csv_file_name)
 
 
+def main(bag_file_name):
+    bag_file = bag_file_name + '/' + bag_file_name + '_0.db3'
+    
+    vel_cols = ['time', 'u', 'v', 'w', 'roll', 'pitch', 'yaw']
+    input_cols = ['time', 'n_p', 'rudder']
+    pose_cols = ['time', 'x', 'y', 'z', 'roll', 'pitch', 'yaw']
+
+    parser = BagFileParser(bag_file)
+    topic_names = list(parser.topic_type)
+
+    while topic_names:
+        topic_name = topic_names.pop()
+        if 'ship' not in topic_name:
+            continue
+        
+        save_dir = bag_file_name + '/' + topic_name.split('/')[1]
+        os.makedirs(save_dir, exist_ok = True)
+
+        msg = parser.get_messages(topic_name)
+        file_name = save_dir + '/df_' +topic_name.split('/')[2] + '.csv'
+        if 'input' in file_name:
+            control_to_csv(msg, file_name, input_cols)
+        elif 'vel' in file_name:
+            twist_to_csv(msg, file_name, vel_cols)
+        elif 'pose' in file_name:
+            twist_to_csv(msg, file_name, pose_cols)
+        else:
+            print("Error :" + topic_name)
+            print("This message type is not defined. \n Please check bag_to_csv.py")
+        
+
 if __name__ == "__main__":
 
-        bag_file = "subset/subset"  #読み込みファイル名
-        bag_file = bag_file + '_0.db3'
-
-        parser = BagFileParser(bag_file)
-
-        vel = parser.get_messages("/ship1/cmd_vel")
-        vel_cols = ['time', 'u', 'v', 'w', 'roll', 'pitch', 'yaw']
-        twist_to_csv(vel, 'subset/df_cmd_vel.csv', vel_cols)
-
-        con=parser.get_messages("/ship1/control_input")
-        control_cols = ['time', 'n_p', 'rudder']
-        control_to_csv(con, 'subset/df_control_input.csv', control_cols)
-
-        cmd_con = parser.get_messages("/ship1/cmd_input")
-        control_to_csv(cmd_con, 'subset/df_cmd_input.csv', control_cols)
-
-        obs_pose = parser.get_messages("/ship1/obs_pose")
-
-        pose_cols = ['x', 'y', 'z', 'roll', 'pitch', 'yaw']
-        twist_to_csv(obs_pose, 'subset/df_obs_pose.csv', pose_cols)
-
-        obs_vel = parser.get_messages("/ship1/obs_vel")
-        twist_to_csv(obs_vel, 'subset/df_obs_vel.csv', vel_cols)
-
+    bag_file = "subset"  #読み込みファイル名
+    main(bag_file)

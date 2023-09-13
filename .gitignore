@@ -2,3 +2,7 @@
 build/
 install/
 log/
+subset/
+subset*/
+error_calc.py
+make_images/
