@@ -10,76 +10,25 @@ class ModelNode(Node):
 
   cmd_vel_Twist=Twist()
 
-  def __init__(self, ship_number):
+  def __init__(self, ship_number, num_of_ships=1):
     super().__init__("model")
     self.ship_number=ship_number
     self.n_p=0.0
     self.rudder_angle_degree=0.0
-
-    self.declare_parameter("ρ", 1.025)
-
-    # KVLCC2 L7-model
-    self.declare_parameter("L", 7.00)
-    self.declare_parameter("B", 1.27)
-    self.declare_parameter("d", 0.46)
-    self.declare_parameter("nabla", 3.27)
-    self.declare_parameter("xG", 0.25)
-    self.declare_parameter("Cb", 0.810)
-    self.declare_parameter("Dp", 0.216)
-    self.declare_parameter("AR", 0.0539)
-    self.declare_parameter("HR", 0.345)
-    self.declare_parameter("mx_", 0.022)
-    self.declare_parameter("my_", 0.223)
-    self.declare_parameter("Jzz_", 0.011)
-    self.declare_parameter("fa", 2.747)
-    self.declare_parameter("ϵ", 1.09)
-    self.declare_parameter("tR", 0.387)
-    self.declare_parameter("aH", 0.312)
-    self.declare_parameter("xH_", -0.464)
-    self.declare_parameter("γR", 0.395)
-    self.declare_parameter("lr_", -0.710)
-    self.declare_parameter("κ", 0.50)
-    self.declare_parameter("tP", 0.220)
-    self.declare_parameter("wpo", 0.40)
-
-    # Maneuvering coefficients
-    self.declare_parameter("k0", 0.2931)
-    self.declare_parameter("k1", -0.2753)
-    self.declare_parameter("k2", -0.1385)
-    self.declare_parameter("R_0", 0.022)
-    self.declare_parameter("X_vv", -0.040)
-    self.declare_parameter("X_vr", 0.002)
-    self.declare_parameter("X_rr", 0.011)
-    self.declare_parameter("X_vvvv", 0.771)
-
-    self.declare_parameter("Y_v", -0.315)
-    self.declare_parameter("Y_r", 0.083)
-    self.declare_parameter("Y_vvr", 0.379)
-    self.declare_parameter("Y_vrr", -0.391)
-    self.declare_parameter("Y_vvv", -1.607)
-    self.declare_parameter("Y_rrr", 0.008)
-
-    self.declare_parameter("N_v", -0.137)
-    self.declare_parameter("N_r", -0.049)
-    self.declare_parameter("N_vvr", -0.294)
-    self.declare_parameter("N_vrr", 0.055)
-    self.declare_parameter("N_vvv", -0.030)
-    self.declare_parameter("N_rrr", -0.013)
-
+    self.declare_parameter("delta_time", 0.1)
+    self.set_ship_params()
 
     self.declare_parameter("subscribe_address", "/ship"+str(ship_number)+"/cmd_input")
     subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
     self.subscription=self.create_subscription(
       Control, subscribe_address, self.listener_callback, 10
     )
-
-    self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/cmd_vel")
-    publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
-    self.pub_cmd_vel=self.create_publisher(Twist,publish_address,10)
-
-    self.declare_parameter("delta_time", 0.1)
-    delta_time=self.get_parameter("delta_time").value
-    self.timer=self.create_timer(delta_time,self.sender_callback)
+    for i in range(num_of_ships):
+      self.declare_parameter("publish_address"+str(i), "/ship"+str(ship_number)+"/cmd_vel"+str(i))
+      publish_address=(self.get_parameter("publish_address"+str(i)).get_parameter_value().string_value)
+      self.pub_cmd_vel=self.create_publisher(Twist,publish_address,10)
+      delta_time=self.get_parameter("delta_time").value
+      self.timer=self.create_timer(delta_time,self.sender_callback)
 
   def listener_callback(self,msg):
     self.get_logger().info('ship_number[%s] Subscribe: n_p="%s", rudder_angle="%s"'%(self.ship_number, msg.n_p, msg.rudder_angle_degree))
@@ -213,6 +162,56 @@ class ModelNode(Node):
 
     return twist
 
+  def set_ship_params(self):
+    self.declare_parameter("ρ", 1.025)
+
+    # KVLCC2 L7-model
+    self.declare_parameter("L", 7.00)
+    self.declare_parameter("B", 1.27)
+    self.declare_parameter("d", 0.46)
+    self.declare_parameter("nabla", 3.27)
+    self.declare_parameter("xG", 0.25)
+    self.declare_parameter("Cb", 0.810)
+    self.declare_parameter("Dp", 0.216)
+    self.declare_parameter("AR", 0.0539)
+    self.declare_parameter("HR", 0.345)
+    self.declare_parameter("mx_", 0.022)
+    self.declare_parameter("my_", 0.223)
+    self.declare_parameter("Jzz_", 0.011)
+    self.declare_parameter("fa", 2.747)
+    self.declare_parameter("ϵ", 1.09)
+    self.declare_parameter("tR", 0.387)
+    self.declare_parameter("aH", 0.312)
+    self.declare_parameter("xH_", -0.464)
+    self.declare_parameter("γR", 0.395)
+    self.declare_parameter("lr_", -0.710)
+    self.declare_parameter("κ", 0.50)
+    self.declare_parameter("tP", 0.220)
+    self.declare_parameter("wpo", 0.40)
+
+    # Maneuvering coefficients
+    self.declare_parameter("k0", 0.2931)
+    self.declare_parameter("k1", -0.2753)
+    self.declare_parameter("k2", -0.1385)
+    self.declare_parameter("R_0", 0.022)
+    self.declare_parameter("X_vv", -0.040)
+    self.declare_parameter("X_vr", 0.002)
+    self.declare_parameter("X_rr", 0.011)
+    self.declare_parameter("X_vvvv", 0.771)
+
+    self.declare_parameter("Y_v", -0.315)
+    self.declare_parameter("Y_r", 0.083)
+    self.declare_parameter("Y_vvr", 0.379)
+    self.declare_parameter("Y_vrr", -0.391)
+    self.declare_parameter("Y_vvv", -1.607)
+    self.declare_parameter("Y_rrr", 0.008)
+
+    self.declare_parameter("N_v", -0.137)
+    self.declare_parameter("N_r", -0.049)
+    self.declare_parameter("N_vvr", -0.294)
+    self.declare_parameter("N_vrr", 0.055)
+    self.declare_parameter("N_vvv", -0.030)
+    self.declare_parameter("N_rrr", -0.013)
 
 def main(args=None):
   rclpy.init(args=args)
@@ -221,7 +220,7 @@ def main(args=None):
   num_of_ships = int(input("Input number of ships: "))
   nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
   for ship_number in range(num_of_ships):
-      globals()[nodes[ship_number]] = ModelNode(ship_number+1)
+      globals()[nodes[ship_number]] = ModelNode(ship_number+1,num_of_ships)
   for ship_number in range(num_of_ships):
       exec.add_node(globals()[nodes[ship_number]])
   exec.spin()
