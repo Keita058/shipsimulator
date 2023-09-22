@@ -10,7 +10,7 @@ class ModelNode(Node):
 
   cmd_vel_Twist=Twist()
 
-  def __init__(self, ship_number, num_of_ships=1):
+  def __init__(self, ship_number):
     super().__init__("model")
     self.ship_number=ship_number
     self.n_p=0.0
@@ -23,12 +23,12 @@ class ModelNode(Node):
     self.subscription=self.create_subscription(
       Control, subscribe_address, self.listener_callback, 10
     )
-    for i in range(num_of_ships):
-      self.declare_parameter("publish_address"+str(i), "/ship"+str(ship_number)+"/cmd_vel"+str(i))
-      publish_address=(self.get_parameter("publish_address"+str(i)).get_parameter_value().string_value)
-      self.pub_cmd_vel=self.create_publisher(Twist,publish_address,10)
-      delta_time=self.get_parameter("delta_time").value
-      self.timer=self.create_timer(delta_time,self.sender_callback)
+
+    self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/cmd_vel")
+    publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
+    self.pub_cmd_vel=self.create_publisher(Twist,publish_address,10)
+    delta_time=self.get_parameter("delta_time").value
+    self.timer=self.create_timer(delta_time,self.sender_callback)
 
   def listener_callback(self,msg):
     self.get_logger().info('ship_number[%s] Subscribe: n_p="%s", rudder_angle="%s"'%(self.ship_number, msg.n_p, msg.rudder_angle_degree))
@@ -220,7 +220,7 @@ def main(args=None):
   num_of_ships = int(input("Input number of ships: "))
   nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
   for ship_number in range(num_of_ships):
-      globals()[nodes[ship_number]] = ModelNode(ship_number+1,num_of_ships)
+      globals()[nodes[ship_number]] = ModelNode(ship_number+1)
   for ship_number in range(num_of_ships):
       exec.add_node(globals()[nodes[ship_number]])
   exec.spin()
