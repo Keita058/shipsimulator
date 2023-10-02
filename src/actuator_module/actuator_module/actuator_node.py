@@ -79,7 +79,7 @@ def main(args=None):
     """Run main."""
     rclpy.init(args=args)
     exec = SingleThreadedExecutor()
-    num_of_ships = int(input("Input number of ships: "))
+    num_of_ships = 2
     nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
     for ship_number in range(num_of_ships):
         globals()[nodes[ship_number]] = ActuatorNode(ship_number+1)
