@@ -31,16 +31,16 @@ class MmgControllerNode(Node):
 
     def listener_callback(self,data):
         if data.buttons[6] or data.buttons[7]:
-            self.n_p += (data.axes[2]-data.axes[5])*0.5
-        self.n_p +- (data.buttons[2]*5-data.buttons[0]*5)
+            self.n_p += (data.axes[2]-data.axes[5])*0.01
+        self.n_p +- (data.buttons[2]-data.buttons[0])*5
 
-        self.rudder_angle_degree += -data.axes[0]*0.3
-        self.rudder_angle_degree += (data.buttons[1]*5-data.buttons[3]*5)
+        self.rudder_angle_degree += -data.axes[0]*0.01
+        self.rudder_angle_degree += (data.buttons[1]-data.buttons[3])*5
 
         if self.n_p<0:
             self.n_p=0.0
-        elif self.n_p>120:
-            self.n_p=120.0
+        elif self.n_p>60:
+            self.n_p=60.0
         if self.rudder_angle_degree<-45:
             self.rudder_angle_degree=-45.0
         elif self.rudder_angle_degree>45:
