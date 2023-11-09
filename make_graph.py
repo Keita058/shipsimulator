@@ -115,16 +115,16 @@ def create_graph(csv_path):
             velocity_graph(csv_path)
 
 #グラフを作るデータがあるCSVファイルのあるディレクトリ名を指定
-dir_name="subset"
+dir_name="./subset/ship1"
 
 files = os.listdir(dir_name)
 
 for file in files:
     if file.endswith('.csv'):
-        #print(file+"はCSVです")
+        print(file+"はCSVです")
         f_path = os.path.join(dir_name,file)
         print(f_path)
         create_graph(f_path)
     else:
-        #print(file+"はCSVではありません")
+        print(file+"はCSVではありません")
         continue
