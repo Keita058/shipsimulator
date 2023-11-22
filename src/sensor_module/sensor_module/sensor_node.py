@@ -1,7 +1,6 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-from shipsim_msgs_module.msg import Control
 from rclpy.executors import SingleThreadedExecutor
 
 class SensorNode(Node):
@@ -43,7 +42,7 @@ def main(args=None):
     for ship_number in range(num_of_ships):
         globals()[nodes[ship_number]].destroy_node()
 
-    rclpy.shutdow()
+    rclpy.shutdown()
 
 if __name__=="__main__":
     main()
