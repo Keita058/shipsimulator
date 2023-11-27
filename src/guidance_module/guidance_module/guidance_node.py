@@ -4,6 +4,7 @@ from geometry_msgs.msg import Twist
 from rclpy.executors import SingleThreadedExecutor
 from shipsim_msgs_module.msg import LOSangle
 import numpy as np
+from sympy import geometry as sg
 
 class LOSGuidance():
     def __init__(self, ship_position, WayPoint1, WayPoint2):
@@ -14,40 +15,26 @@ class LOSGuidance():
     def linear_eq(self, WP1, WP2):
         WP1_x,WP1_y=WP1
         WP2_x,WP2_y=WP2
-
         #calc ax+by+c=0
         a=WP2_y-WP1_y
         b=-(WP2_x-WP1_x)
         c=WP2_x*WP1_y-WP1_x*WP2_y
-
         return (a,b,c)
 
-    def track_error(self, ship, line_coef):
-        ship_x,ship_y=ship
-        a,b,c=line_coef
+    def track_error(self, ship_position, WP1, WP2):
+        ship_x,ship_y=ship_position
+        a,b,c=self.linear_eq(WP1, WP2)
         error=abs(a*ship_x+b*ship_y+c)/np.sqrt(a**2+b**2)
         return error
 
-    def calc_intersection(self, center, radius, line_coef):
-        cx,cy=center
-        R=radius
-        a,b,c=line_coef
-
-        if a==0:
-            y1=-c/b
-            x1=-np.sqrt(R**2-(y1-cy)**2)+cx
-            y2=-c/b
-            x2=np.sqrt(R**2-(y2-cy)**2)+cx
-        elif b==0:
-            x1=-c/a
-            y1=-np.sqrt(R**2-(x1-cx)**2)+cy
-            x2=-c/a
-            y2=np.sqrt(R**2-(x2-cx)**2)+cy
-        else:
-            pass
+    def calc_intersection(self, center, radius, WP1, WP2):
+        circle=sg.Circle(sg.Point(center), radius)
+        line=sg.Line(sg.Point(WP1), sg.Point(WP2))
+        result=sg.intersection(circle, line)
+        return result
 
     def desired_angle(self):
-        L_pp=7.00
+        L_pp=7.00 #Ship Length
         N=3 #N:= R_LOS=N*L_pp
         line_coef=self.linear_eq(self.WP1, self.WP2)
         e=self.track_error(self.ship, line_coef)

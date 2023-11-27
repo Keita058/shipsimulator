@@ -22,7 +22,7 @@ setup(
         'console_scripts': [
           "model_node = mmg_module.model_node:main",
           "controller_node = mmg_module.controller_node:main",
-          "controller_key_node = mmg_module.controller_key_node:main",
+          "mpc_controller_node = mmg_module.mpc_controller_node:main",
         ],
     },
 )
