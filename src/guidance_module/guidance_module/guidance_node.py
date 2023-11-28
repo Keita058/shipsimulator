@@ -5,64 +5,110 @@ from rclpy.executors import SingleThreadedExecutor
 from shipsim_msgs_module.msg import LOSangle
 import numpy as np
 from sympy import geometry as sg
+from numpy import linalg as LA
 
-class LOSGuidance():
-    def __init__(self, ship_position, WayPoint1, WayPoint2):
-        self.ship=ship_position
-        self.WP1=WayPoint1
-        self.WP2=WayPoint2
+class LOSGuidance:
+    def __init__(self, ShipPosition, WayPoints, now_wp_index,L_pp):
+        self.ship=ShipPosition
+        self.WPs=WayPoints
+        self.now_wp_id=now_wp_index
+        self.L_pp=L_pp
 
-    def linear_eq(self, WP1, WP2):
-        WP1_x,WP1_y=WP1
-        WP2_x,WP2_y=WP2
-        #calc ax+by+c=0
-        a=WP2_y-WP1_y
-        b=-(WP2_x-WP1_x)
-        c=WP2_x*WP1_y-WP1_x*WP2_y
+    def set_WayPoints(self):
+        #現在目標としているWP(WPs[now_index])と船の距離がL未満であれば次のWPを目標とする
+        #WPsの一番最後のWPの一定範囲内であれば、最初のWPに戻る
+        M=len(self.WPs)
+        s_x,s_y=self.ship[0],self.ship[1]
+        k=self.now_wp_id
+        now_WPx,now_WPy=self.WPs[k]
+        dist=np.sqrt((s_x-now_WPx)**2+(s_y-now_WPy)**2)
+        if dist<self.L_pp:
+            k+=1
+        k=k%M
+        k_prev=(k-1)%M
+        res_WP1,res_WP2=self.WPs[k_prev],self.WPs[k]
+        self.now_wp_id=k
+        return res_WP1,res_WP2
+
+    def liner_eq(self,P1,P2):
+        #P1,P2はtuple型
+        #P1=(x1,y1),P2=(x2,y2)
+        #ax+by+c=0型
+        x1,y1=P1
+        x2,y2=P2
+        a=y2-y1
+        b=x1-x2
+        c=x2*y1-x1*y2
         return (a,b,c)
 
-    def track_error(self, ship_position, WP1, WP2):
-        ship_x,ship_y=ship_position
-        a,b,c=self.linear_eq(WP1, WP2)
+    def calc_TrackError(self,WP1,WP2):
+        ship_x,ship_y=self.ship
+        a,b,c=self.liner_eq(WP1,WP2)
         error=abs(a*ship_x+b*ship_y+c)/np.sqrt(a**2+b**2)
         return error
 
-    def calc_intersection(self, center, radius, WP1, WP2):
-        circle=sg.Circle(sg.Point(center), radius)
-        line=sg.Line(sg.Point(WP1), sg.Point(WP2))
-        result=sg.intersection(circle, line)
-        return result
-
-    def desired_angle(self):
-        L_pp=7.00 #Ship Length
-        N=3 #N:= R_LOS=N*L_pp
-        line_coef=self.linear_eq(self.WP1, self.WP2)
-        e=self.track_error(self.ship, line_coef)
-        if e<N*L_pp:
-            R_LOS=N*L_pp
+    def calc_LOSRadius(self, e, N=3):
+        if e<N*self.L_pp:
+            R=N*self.L_pp
         else:
-            R_LOS=e+L_pp
-        
+            R=e+self.L_pp
+        return R
+
+    def calc_HeadingAngle(self, P1, P2, WP):
+        #船の現在地とP1,P2,WP2の位置関係からLOS Pointを選択
+        #LOS Pointと船の現在地からHeadingAngleを計算
+        north=np.array([1,0])
+        P1=np.array([float(P1.x),float(P1.y)])
+        P2=np.array([float(P2.x),float(P2.y)])
+        WP=np.array([WP[0],WP[1]])
+        Ship=np.array([self.ship[0],self.ship[1]])
+        A=P1-Ship
+        B=P2-Ship
+        C=WP-Ship
+        #print('vector A,B,C=',A,B,C)
+        #正であるほうが次のWPに近い点
+        if np.inner(A,C)>0:
+            #P1と北がなす角を返す
+            i=np.inner(north,A)
+            n=LA.norm(north)*LA.norm(A)
+        else:
+            #P2と北がなす角を返す
+            i=np.inner(north,B)
+            n=LA.norm(north)*LA.norm(B)
+        return np.arccos(i/n)
+    
+    def desired_angle(self):
+        WP1,WP2=self.set_WayPoints()
+        e=self.calc_TrackError(WP1,WP2)
+        R_LOS=self.calc_LOSRadius(e,N=3)
+        circle=sg.Circle(sg.Point(self.ship[0],self.ship[1]),R_LOS)
+        line=sg.Line(sg.Point(WP1),sg.Point(WP2))
+        results=sg.intersection(circle,line)
+        P1,P2=results[0],results[1]
+        d_ang=self.calc_HeadingAngle(P1,P2,WP2)
+        return d_ang, self.now_wp_id
 
 class GuidanceNode(Node):
     """GuidanceNode"""
     def __init__(self, ship_number):
         super().__init__("guidance")
+        self.ship_number=ship_number
         self.ship_x=0.0
         self.ship_y=0.0
+        self.now_wp_id=0
 
-        self.declare_parameter("subscribe_address","/ship"+str(ship_number)+"/obs_pose")
+        self.declare_parameter("subscribe_address","/ship"+str(self.ship_number)+"/obs_pose")
         subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
         self.subscription=self.create_subscription(
             Twist, subscribe_address, self.listener_callback, 10
         )
 
-        self.declare_parameter("delta_time",0.1)
-        self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/guidance")
+        self.declare_parameter("delta_time",3.0)
+        self.declare_parameter("publish_address", "/ship"+str(self.ship_number)+"/guidance")
         publish_address = (
             self.get_parameter("publish_address").get_parameter_value().string_value
         )
-        self.publisher = self.create_publisher(Twist, publish_address, 10)
+        self.pub_guide_angle = self.create_publisher(LOSangle, publish_address, 10)
 
         delta_time=self.get_parameter("delta_time").value
         self.timer=self.create_timer(delta_time, self.sender_callback)
@@ -73,8 +119,9 @@ class GuidanceNode(Node):
 
     def sender_callback(self):
         self.msg=LOSangle()
-        self.msg.los_angle=0.0 #TODO: calculate LOSangle
-        self.publisher.publish(self.msg)
+        los_ang=LOSGuidance(ShipPosition=(self.ship_x,self.ship_y), WayPoints=[(0.0,0.0),(100.0,0.0),(100.0,100.0),(0.0,100.0)], now_wp_index=self.now_wp_id, L_pp=7.0)
+        self.msg.los_angle, self.now_wp_id = los_ang.desired_angle() #TODO: calculate LOSangle
+        self.pub_guide_angle.publish(self.msg)
         self.get_logger().info('`ship_number[%s]Publish: LOSangle=%s'%(self.ship_number,self.msg.los_angle))
 
 def main(args=None):
