@@ -15,7 +15,7 @@ class ModelNode(Node):
     self.ship_number=ship_number
     self.n_p=0.0
     self.rudder_angle_degree=0.0
-    self.declare_parameter("delta_time", 3.0)
+    self.declare_parameter("delta_time", 1.0)
     self.set_ship_params()
 
     self.declare_parameter("subscribe_address", "/ship"+str(ship_number)+"/cmd_input")

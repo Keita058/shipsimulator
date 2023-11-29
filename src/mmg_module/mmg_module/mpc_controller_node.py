@@ -34,7 +34,7 @@ class MPCControllerNode(Node):
         )
 
         #Publisher
-        self.declare_parameter("delta_time",3.0)
+        self.declare_parameter("delta_time",1.0)
         self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/cmd_input")
         publish_address = (
             self.get_parameter("publish_address").get_parameter_value().string_value
@@ -47,7 +47,7 @@ class MPCControllerNode(Node):
         #self.get_logger().info('ship_number[%s] Subscribe: x="%ss", y="%s", psi="%s"'%(self.ship_number, msg.linear.x, msg.linear.y, msg.angular.z))
         self.x=msg.linear.x
         self.y=msg.linear.y
-        self.psi=msg.angular.z
+        self.psi=msg.angular.z*np.pi/180
     
     def listener_callback2(self,msg):
         #self.get_logger().info('ship_number[%s] Subscribe: u="%ss", v="%s", r="%s"'%(self.ship_number, msg.linear.x, msg.linear.y, msg.angular.z))
@@ -63,7 +63,7 @@ class MPCControllerNode(Node):
         self.msg=Control()
         basic_params = get_KVLCC2_L7model_basic_params()
         mpc_params = set_mpc_params(
-            n_horizon=10,
+            n_horizon=5,
             t_step=1,
             n_robust=1,
             store_full_solution=True,
@@ -86,7 +86,7 @@ class MPCControllerNode(Node):
         self.msg.rudder_angle_degree,self.msg.n_p=mpc.get_mpc_input() #TODO: calculate n_p, rudder_angle_degree by MPC
         self.n_p=self.msg.n_p
         self.rudder_angle_degree=self.msg.rudder_angle_degree
-        self.get_logger().info('ship_number[%s] Publish: n_p="%s", rudder_angle="%s"'%(self.ship_number, self.n_p, self.rudder_angle_degree))
+        self.get_logger().info('ship_number[%s] Publish: n_p="%s", rudder_angle="%s"'%(self.ship_number, self.n_p, self.rudder_angle_degree*180/np.pi))
         self.pub_cmd_input.publish(self.msg)
 
 

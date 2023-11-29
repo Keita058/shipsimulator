@@ -22,7 +22,7 @@ class LOSGuidance:
         k=self.now_wp_id
         now_WPx,now_WPy=self.WPs[k]
         dist=np.sqrt((s_x-now_WPx)**2+(s_y-now_WPy)**2)
-        if dist<self.L_pp:
+        if dist<2*self.L_pp:
             k+=1
         k=k%M
         k_prev=(k-1)%M
@@ -64,18 +64,19 @@ class LOSGuidance:
         Ship=np.array([self.ship[0],self.ship[1]])
         A=P1-Ship
         B=P2-Ship
-        C=WP-Ship
+        dist1=LA.norm(P1-WP)
+        dist2=LA.norm(P2-WP)
         #print('vector A,B,C=',A,B,C)
         #正であるほうが次のWPに近い点
-        if np.inner(A,C)>0:
+        if dist1<dist2:
             #P1と北がなす角を返す
-            i=np.inner(north,A)
-            n=LA.norm(north)*LA.norm(A)
+            res_ang=np.arctan2(A[1],A[0])
         else:
             #P2と北がなす角を返す
-            i=np.inner(north,B)
-            n=LA.norm(north)*LA.norm(B)
-        return np.arccos(i/n)
+            res_ang=np.arctan2(B[1],B[0])
+        if res_ang>np.pi:
+            res_ang=res_ang-2*np.pi
+        return res_ang
     
     def desired_angle(self):
         WP1,WP2=self.set_WayPoints()
@@ -84,7 +85,11 @@ class LOSGuidance:
         circle=sg.Circle(sg.Point(self.ship[0],self.ship[1]),R_LOS)
         line=sg.Line(sg.Point(WP1),sg.Point(WP2))
         results=sg.intersection(circle,line)
-        P1,P2=results[0],results[1]
+        if len(results)==1:
+            P1=results[0]
+            P2=P1
+        else:
+            P1,P2=results[0],results[1]
         d_ang=self.calc_HeadingAngle(P1,P2,WP2)
         return d_ang, self.now_wp_id
 
@@ -103,7 +108,7 @@ class GuidanceNode(Node):
             Twist, subscribe_address, self.listener_callback, 10
         )
 
-        self.declare_parameter("delta_time",3.0)
+        self.declare_parameter("delta_time",1.0)
         self.declare_parameter("publish_address", "/ship"+str(self.ship_number)+"/guidance")
         publish_address = (
             self.get_parameter("publish_address").get_parameter_value().string_value
@@ -119,10 +124,11 @@ class GuidanceNode(Node):
 
     def sender_callback(self):
         self.msg=LOSangle()
-        los_ang=LOSGuidance(ShipPosition=(self.ship_x,self.ship_y), WayPoints=[(0.0,0.0),(100.0,0.0),(100.0,100.0),(0.0,100.0)], now_wp_index=self.now_wp_id, L_pp=7.0)
+        WPs=[(0.0,0.0),(100.0,0.0),(100.0,100.0),(0.0,100.0)]
+        los_ang=LOSGuidance(ShipPosition=(self.ship_x,self.ship_y), WayPoints=WPs, now_wp_index=self.now_wp_id, L_pp=7.0)
         self.msg.los_angle, self.now_wp_id = los_ang.desired_angle() #TODO: calculate LOSangle
         self.pub_guide_angle.publish(self.msg)
-        self.get_logger().info('`ship_number[%s]Publish: LOSangle=%s'%(self.ship_number,self.msg.los_angle))
+        self.get_logger().info('`ship_number[%s]Publish: LOSangle=%s, Now Target Point=%s'%(self.ship_number,self.msg.los_angle*180/np.pi,WPs[self.now_wp_id]))
 
 def main(args=None):
     """Run main"""

@@ -23,6 +23,7 @@ setup(
           "model_node = mmg_module.model_node:main",
           "controller_node = mmg_module.controller_node:main",
           "mpc_controller_node = mmg_module.mpc_controller_node:main",
+          "pid_controller_node = mmg_module.pid_controller_node:main",
         ],
     },
 )

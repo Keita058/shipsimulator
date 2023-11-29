@@ -56,6 +56,14 @@ def control_to_csv(message, csv_file_name, cols):
     df = pd.DataFrame(dic)
     df.to_csv(csv_file_name)
 
+def guidance_to_csv(message, csv_file_name, cols):
+    time = [message[i][0]*1e-9 - message[0][0]*1e-9 for i in range(len(message))]
+    los_angle = [message[i][1].los_angle for i in range(len(message))]
+    message_list = [time, los_angle]
+    dic = {cols[i]:message_list[i] for i in range(len(cols))}
+    df = pd.DataFrame(dic)
+    df.to_csv(csv_file_name)
+
 
 def main(bag_file_name):
     bag_file = bag_file_name + '/' + bag_file_name + '_0.db3'
@@ -63,6 +71,7 @@ def main(bag_file_name):
     vel_cols = ['time', 'u', 'v', 'w', 'roll', 'pitch', 'yaw']
     input_cols = ['time', 'n_p', 'rudder']
     pose_cols = ['time', 'x', 'y', 'z', 'roll', 'pitch', 'yaw']
+    guidance_cols = ['time', 'LOS angle']
 
     parser = BagFileParser(bag_file)
     topic_names = list(parser.topic_type)
@@ -83,6 +92,8 @@ def main(bag_file_name):
             twist_to_csv(msg, file_name, vel_cols)
         elif 'pose' in file_name:
             twist_to_csv(msg, file_name, pose_cols)
+        elif 'guidance' in file_name:
+            guidance_to_csv(msg, file_name, guidance_cols)
         else:
             print("Error :" + topic_name)
             print("This message type is not defined. \n Please check bag_to_csv.py")
@@ -90,5 +101,5 @@ def main(bag_file_name):
 
 if __name__ == "__main__":
 
-    bag_file = "subset"  #読み込みファイル名
+    bag_file = "subset1"  #読み込みファイル名
     main(bag_file)
