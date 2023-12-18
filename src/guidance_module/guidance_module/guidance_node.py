@@ -7,6 +7,65 @@ import numpy as np
 from sympy import geometry as sg
 from numpy import linalg as LA
 
+class GuidanceNode(Node):
+    """GuidanceNode"""
+    def __init__(self, ship_number):
+        super().__init__("guidance")
+        self.ship_number=ship_number
+        self.ship_x=0.0
+        self.ship_y=0.0
+        self.now_wp_id=0
+
+        self.declare_parameter("subscribe_address","/ship"+str(self.ship_number)+"/obs_pose")
+        subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
+        self.subscription=self.create_subscription(
+            Twist, subscribe_address, self.listener_callback, 10
+        )
+
+        self.declare_parameter("delta_time",1.0)
+        self.declare_parameter("publish_address", "/ship"+str(self.ship_number)+"/guidance")
+        publish_address = (
+            self.get_parameter("publish_address").get_parameter_value().string_value
+        )
+        self.pub_guide_angle = self.create_publisher(LOSangle, publish_address, 10)
+
+        delta_time=self.get_parameter("delta_time").value
+        self.timer=self.create_timer(delta_time, self.sender_callback)
+
+    def listener_callback(self,data):
+        self.ship_x=data.linear.x
+        self.ship_y=data.linear.y
+
+    def sender_callback(self):
+        self.msg=LOSangle()
+        WPs=[(0.0,0.0),(100.0,0.0),(100.0,100.0),(0.0,100.0)]
+        los_ang=LOSGuidance(ShipPosition=(self.ship_x,self.ship_y), WayPoints=WPs, now_wp_index=self.now_wp_id, L_pp=7.0)
+        self.msg.los_angle, self.now_wp_id = los_ang.desired_angle() #TODO: calculate LOSangle
+        self.pub_guide_angle.publish(self.msg)
+        self.get_logger().info('`ship_number[%s]Publish: LOSangle=%s, Now Target Point=%s'%(self.ship_number,self.msg.los_angle*180/np.pi,WPs[self.now_wp_id]))
+
+def main(args=None):
+    """Run main"""
+    rclpy.init(args=args)
+
+    exec = SingleThreadedExecutor()
+    num_of_ships = 2
+    nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
+
+    for ship_number in range(num_of_ships):
+        globals()[nodes[ship_number]] = GuidanceNode(ship_number+1)
+    for ship_number in range(num_of_ships):
+        exec.add_node(globals()[nodes[ship_number]])
+    exec.spin()
+    exec.shutdown()
+    for ship_number in range(num_of_ships):
+        globals()[nodes[ship_number]].destroy_node()
+
+    rclpy.shutdown()
+
+if __name__ == "__main__":
+    main()
+
 class LOSGuidance:
     def __init__(self, ShipPosition, WayPoints, now_wp_index,L_pp):
         self.ship=ShipPosition
@@ -22,7 +81,7 @@ class LOSGuidance:
         k=self.now_wp_id
         now_WPx,now_WPy=self.WPs[k]
         dist=np.sqrt((s_x-now_WPx)**2+(s_y-now_WPy)**2)
-        if dist<2*self.L_pp:
+        if dist<3*self.L_pp:
             k+=1
         k=k%M
         k_prev=(k-1)%M
@@ -92,62 +151,3 @@ class LOSGuidance:
             P1,P2=results[0],results[1]
         d_ang=self.calc_HeadingAngle(P1,P2,WP2)
         return d_ang, self.now_wp_id
-
-class GuidanceNode(Node):
-    """GuidanceNode"""
-    def __init__(self, ship_number):
-        super().__init__("guidance")
-        self.ship_number=ship_number
-        self.ship_x=0.0
-        self.ship_y=0.0
-        self.now_wp_id=0
-
-        self.declare_parameter("subscribe_address","/ship"+str(self.ship_number)+"/obs_pose")
-        subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
-        self.subscription=self.create_subscription(
-            Twist, subscribe_address, self.listener_callback, 10
-        )
-
-        self.declare_parameter("delta_time",1.0)
-        self.declare_parameter("publish_address", "/ship"+str(self.ship_number)+"/guidance")
-        publish_address = (
-            self.get_parameter("publish_address").get_parameter_value().string_value
-        )
-        self.pub_guide_angle = self.create_publisher(LOSangle, publish_address, 10)
-
-        delta_time=self.get_parameter("delta_time").value
-        self.timer=self.create_timer(delta_time, self.sender_callback)
-
-    def listener_callback(self,data):
-        self.ship_x=data.linear.x
-        self.ship_y=data.linear.y
-
-    def sender_callback(self):
-        self.msg=LOSangle()
-        WPs=[(0.0,0.0),(100.0,0.0),(100.0,100.0),(0.0,100.0)]
-        los_ang=LOSGuidance(ShipPosition=(self.ship_x,self.ship_y), WayPoints=WPs, now_wp_index=self.now_wp_id, L_pp=7.0)
-        self.msg.los_angle, self.now_wp_id = los_ang.desired_angle() #TODO: calculate LOSangle
-        self.pub_guide_angle.publish(self.msg)
-        self.get_logger().info('`ship_number[%s]Publish: LOSangle=%s, Now Target Point=%s'%(self.ship_number,self.msg.los_angle*180/np.pi,WPs[self.now_wp_id]))
-
-def main(args=None):
-    """Run main"""
-    rclpy.init(args=args)
-
-    exec = SingleThreadedExecutor()
-    num_of_ships = 2
-    nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
-
-    for ship_number in range(num_of_ships):
-        globals()[nodes[ship_number]] = GuidanceNode(ship_number+1)
-    for ship_number in range(num_of_ships):
-        exec.add_node(globals()[nodes[ship_number]])
-    exec.spin()
-    exec.shutdown()
-    for ship_number in range(num_of_ships):
-        globals()[nodes[ship_number]].destroy_node()
-
-    rclpy.shutdown()
-
-if __name__ == "__main__":
-    main()

@@ -101,5 +101,5 @@ def main(bag_file_name):
 
 if __name__ == "__main__":
 
-    bag_file = "subset1"  #読み込みファイル名
+    bag_file = input("input db3 file name :=")  #読み込みファイル名
     main(bag_file)
