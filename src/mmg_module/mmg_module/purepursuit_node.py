@@ -3,6 +3,7 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from rclpy.executors import SingleThreadedExecutor
 from shipsim_msgs_module.msg import Control
+from shipsim_msgs_module.msg import LOSangle
 import numpy as np
 import cmath
 
@@ -23,6 +24,12 @@ class PurepursuitNode(Node):
         subscribe_address2=self.get_parameter("subscribe_address2").get_parameter_value().string_value
         self.subscription2=self.create_subscription(
             Twist, subscribe_address2, self.listener_callback2, 10
+            )
+        
+        self.declare_parameter("subscribe_address3","/ship"+str(self.ship_number)+"/guidance")
+        subscribe_address3=self.get_parameter("subscribe_address3").get_parameter_value().string_value
+        self.subscription3=self.create_subscription(
+            LOSangle, subscribe_address3, self.listener_callback3, 10
             )
         
         self.declare_parameter("publish_address","/ship"+str(self.ship_number)+"/control_input")
