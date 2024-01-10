@@ -25,7 +25,7 @@ class PurepursuitNode(Node):
             Twist, subscribe_address2, self.listener_callback2, 10
             )
         
-        self.declare_parameter("publish_address","/ship"+str(self.ship_number)+"/cmd_vel")
+        self.declare_parameter("publish_address","/ship"+str(self.ship_number)+"/control_input")
         publish_address=self.get_parameter("publish_address").get_parameter_value().string_value
         self.pub_cmd_vel=self.create_publisher(Twist, publish_address, 10)
         delta_time=self.get_parameter("delta_time").value
