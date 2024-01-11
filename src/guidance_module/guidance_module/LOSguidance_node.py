@@ -7,10 +7,10 @@ import numpy as np
 from sympy import geometry as sg
 from numpy import linalg as LA
 
-class GuidanceNode(Node):
-    """GuidanceNode"""
+class LosguidanceNode(Node):
+    """LOSGuidanceNode"""
     def __init__(self, ship_number):
-        super().__init__("guidance")
+        super().__init__("LOSguidance")
         self.ship_number=ship_number
         self.ship_x=0.0
         self.ship_y=0.0
@@ -53,7 +53,7 @@ def main(args=None):
     nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
 
     for ship_number in range(num_of_ships):
-        globals()[nodes[ship_number]] = GuidanceNode(ship_number+1)
+        globals()[nodes[ship_number]] = LosguidanceNode(ship_number+1)
     for ship_number in range(num_of_ships):
         exec.add_node(globals()[nodes[ship_number]])
     exec.spin()
