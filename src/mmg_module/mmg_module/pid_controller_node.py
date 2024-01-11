@@ -11,14 +11,15 @@ class PIDControllerNode(Node):
     def __init__(self, ship_number):
         super().__init__('pid_controller')
         self.ship_number = ship_number
-        self.e_int=np.array([0.0, 0.0])
-        self.e_prev=np.array([0.0, 0.0])
+        self.e_int=np.array([0.0, 0.0, 0.0, 0.0, 0.0])
+        self.e_prev=np.array([0.0, 0.0, 0.0, 0.0, 0.0])
         #Publish Parameter
         self.n_p=0.0
         self.rudder_angle_degree=0.0
         self.LOS_angle=0.0
         self.ship_u=0.0
         self.ship_yaw=0.0
+        self.ship_r_prev=0.0
 
         #Subscriber
         self.declare_parameter("subscribe_address1","/ship"+str(self.ship_number)+"/obs_pose")
@@ -62,7 +63,8 @@ class PIDControllerNode(Node):
     
     def listener_callback3(self,data):
         self.LOS_angle=data.los_angle
-        self.get_logger().info('ship_number[%s] Subscribe: LOS_angle="%s"'%(self.ship_number, self.LOS_angle))
+        self.track_error=data.track_error
+        self.get_logger().info('ship_number[%s] Subscribe: LOS_angle="%s", TrackError=%s'%(self.ship_number, self.LOS_angle, self.track_error))
 
     def sender_callback(self):
         self.msg=Control()
@@ -72,14 +74,15 @@ class PIDControllerNode(Node):
         self.get_logger().info('`ship_number[%s]Publish: n_p=%s, rudder_angle_degree=%s'%(self.ship_number,self.msg.n_p,self.msg.rudder_angle_degree))
     
     def PIDController(self, LOS_angle, ship_yaw, ship_u, n_p, rudder_angle_degree, delta_time):
-        u_ref=1.025
+        u_ref=2.0
         e_u=u_ref-ship_u
         temp_z=cmath.exp((LOS_angle-ship_yaw)*1j)
         e_ang=cmath.phase(temp_z)
-        e_arr=np.array([e_u, e_ang])
-        K_P=np.array([[1, 0],[0, 5]])
-        K_I=np.array([[100, 0],[0, 0.0]])
-        K_D=np.array([[10, 0],[0,5]])
+        e_arr=np.array([e_u, e_ang, self.track_error, self.ship_r, self.ship_r-self.ship_r_prev])
+        self.ship_r_prev=self.ship_r
+        K_P=np.array([[1, 0, 0, 0, 0],[0, 5, 0, 0, 0]])
+        K_I=np.array([[100, 0, 0, 0, 0],[0, 0.0, 0, 0, 0]])
+        K_D=np.array([[10, 0, 0, 0, 0],[0, 5, 0, 0, 0]])
         e_dot=(e_arr-self.e_prev)/delta_time
         e_int=self.e_int+e_arr*delta_time
         m=np.dot(K_P,e_arr)+np.dot(K_I,e_int)+np.dot(K_D,e_dot)

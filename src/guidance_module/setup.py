@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'guidance_node = guidance_module.guidance_node:main',
+            'LOSguidance_node = guidance_module.LOSguidance_node:main',
         ],
     },
 )
