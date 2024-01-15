@@ -65,7 +65,7 @@ def main(args=None):
     rclpy.init(args=args)
 
     exec = SingleThreadedExecutor()
-    num_of_ships = 2
+    num_of_ships = 1
     nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
 
     for ship_number in range(num_of_ships):
