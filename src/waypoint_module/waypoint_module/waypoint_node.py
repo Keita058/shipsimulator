@@ -18,10 +18,12 @@ class WaypointNode(Node):
     
     def sender_callback(self):
         WP1=[0.0,0.0]
-        WP2=[100.0,0.0]
-        WP3=[100.0,100.0]
-        WP4=[0.0,100.0]
-        WP_info=[WP1,WP2,WP3,WP4]
+        WP2=[90.0,0.0]
+        WP3=[145.0,65.0]
+        WP4=[190.0,65.0]
+        WP5=[230.0,45.0]
+        WP6=[320.0,0.0]
+        WP_info=[WP1,WP2,WP3,WP4,WP5,WP6]
         msg=Float64MultiArray()
         for i in range(len(WP_info)):
             for j in range(len(WP_info[i])):
