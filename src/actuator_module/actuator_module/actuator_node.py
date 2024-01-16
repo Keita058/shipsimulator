@@ -19,10 +19,10 @@ class ActuatorNode(Node):
         self.subscription=self.create_subscription(
             Control, subscribe_address, self.listener_callback, 10
         )
-        self.declare_parameter("sub_delta_time", 0.1)
+        self.declare_parameter("sub_delta_time", 1.0)
 
         self.declare_parameter("publish_address","/ship"+str(ship_number)+"/cmd_input")
-        self.declare_parameter("delta_time",0.1)
+        self.declare_parameter("delta_time",1.0)
         publish_address=(self.get_parameter("publish_address").get_parameter_value().string_value)
         self.pub_actuator=self.create_publisher(Control, publish_address, 10)
         delta_time=self.get_parameter("delta_time").value

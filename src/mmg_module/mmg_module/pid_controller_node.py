@@ -19,6 +19,7 @@ class PIDControllerNode(Node):
         self.LOS_angle=0.0
         self.ship_u=0.0
         self.ship_yaw=0.0
+        self.ship_r=0.0
         self.ship_r_prev=0.0
 
         #Subscriber
@@ -80,9 +81,9 @@ class PIDControllerNode(Node):
         e_ang=cmath.phase(temp_z)
         e_arr=np.array([e_u, e_ang, self.track_error, self.ship_r, self.ship_r-self.ship_r_prev])
         self.ship_r_prev=self.ship_r
-        K_P=np.array([[1, 0, 0, 0, 0],[0, 5, 0, 0, 0]])
-        K_I=np.array([[100, 0, 0, 0, 0],[0, 0.0, 0, 0, 0]])
-        K_D=np.array([[10, 0, 0, 0, 0],[0, 5, 0, 0, 0]])
+        K_P=np.array([[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]])
+        K_I=np.array([[0, 0, 0, 0, 0],[0, 0.0, 0, 0, 0]])
+        K_D=np.array([[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]])
         e_dot=(e_arr-self.e_prev)/delta_time
         e_int=self.e_int+e_arr*delta_time
         m=np.dot(K_P,e_arr)+np.dot(K_I,e_int)+np.dot(K_D,e_dot)
