@@ -45,7 +45,7 @@ class ActuatorNode(Node):
     def actuated(self,n_p,rudder_angle,delta_time):
         actuated_msg=Control()
         res_n_p=res_angle=0.0
-        rudder_rate=5.0
+        rudder_rate=10.0
         n_p_rate=5.0
 
         current_n_p=self.actuated_list['n_p'][-1]
@@ -79,7 +79,7 @@ def main(args=None):
     """Run main."""
     rclpy.init(args=args)
     exec = SingleThreadedExecutor()
-    num_of_ships = 2
+    num_of_ships = 1
     nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
     for ship_number in range(num_of_ships):
         globals()[nodes[ship_number]] = ActuatorNode(ship_number+1)
