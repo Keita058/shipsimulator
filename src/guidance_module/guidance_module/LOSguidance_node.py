@@ -49,7 +49,7 @@ class LosguidanceNode(Node):
     def listener_callback2(self,data):
         self.ship_x=data.linear.x
         self.ship_y=data.linear.y
-        self.get_logger().info('ship_number[%s] Subscribe: x="%s", y="%s"'%(self.ship_number, self.ship_x, self.ship_y))
+        #self.get_logger().info('ship_number[%s] Subscribe: x="%s", y="%s"'%(self.ship_number, self.ship_x, self.ship_y))
 
 
     def sender_callback(self):
@@ -120,14 +120,14 @@ class LOSGuidance:
     def calc_TrackError(self):
         ship_x,ship_y=self.ship
         a,b,c=self.liner_eq()
-        error=abs(a*ship_x+b*ship_y+c)/np.sqrt(a**2+b**2)
+        error=(a*ship_x+b*ship_y+c)/np.sqrt(a**2+b**2)
         return error
 
     def calc_LOSRadius(self):
-        if self.track_error<self.LOS_radius:
+        if abs(self.track_error)<self.LOS_radius:
             R=self.LOS_radius
         else:
-            R=self.track_error+self.LOS_radius
+            R=abs(self.track_error)+self.LOS_radius
         return R
 
     def calc_HeadingAngle(self):

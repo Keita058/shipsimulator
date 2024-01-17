@@ -59,7 +59,8 @@ def control_to_csv(message, csv_file_name, cols):
 def guidance_to_csv(message, csv_file_name, cols):
     time = [message[i][0]*1e-9 - message[0][0]*1e-9 for i in range(len(message))]
     los_angle = [message[i][1].los_angle for i in range(len(message))]
-    message_list = [time, los_angle]
+    track_error = [message[i][1].track_error for i in range(len(message))]
+    message_list = [time, los_angle, track_error]
     dic = {cols[i]:message_list[i] for i in range(len(cols))}
     df = pd.DataFrame(dic)
     df.to_csv(csv_file_name)
@@ -71,7 +72,7 @@ def main(bag_file_name):
     vel_cols = ['time', 'u', 'v', 'w', 'roll', 'pitch', 'yaw']
     input_cols = ['time', 'n_p', 'rudder']
     pose_cols = ['time', 'x', 'y', 'z', 'roll', 'pitch', 'yaw']
-    guidance_cols = ['time', 'LOS angle']
+    guidance_cols = ['time', 'LOS angle', 'TrackError']
 
     parser = BagFileParser(bag_file)
     topic_names = list(parser.topic_type)

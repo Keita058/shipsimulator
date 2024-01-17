@@ -45,7 +45,7 @@ class ActuatorNode(Node):
     def actuated(self,n_p,rudder_angle,delta_time):
         actuated_msg=Control()
         res_n_p=res_angle=0.0
-        rudder_rate=5.0
+        rudder_rate=10.0
         n_p_rate=5.0
 
         current_n_p=self.actuated_list['n_p'][-1]
