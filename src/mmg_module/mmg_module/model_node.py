@@ -2,6 +2,7 @@ import sys
 import rclpy
 from rclpy.node import Node
 from shipsim_msgs_module.msg import Control
+from shipsim_msgs_module.msg import Disturbance
 from geometry_msgs.msg import Twist
 import numpy as np
 from rclpy.executors import SingleThreadedExecutor
@@ -15,6 +16,8 @@ class ModelNode(Node):
     self.ship_number=ship_number
     self.n_p=0.0
     self.rudder_angle_degree=0.0
+    self.X_d=0.0
+    self.Y_d=0.0
     self.declare_parameter("delta_time", 1.0)
     self.set_ship_params()
 
@@ -22,6 +25,12 @@ class ModelNode(Node):
     subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
     self.subscription=self.create_subscription(
       Control, subscribe_address, self.listener_callback, 10
+    )
+
+    self.declare_paramete("subscribe_address2", "/ship"+str(ship_number)+"/disturbance")
+    subscribe_address2=(self.get_parameter("subscribe_address2").get_parameter_value().string_value)
+    self.subscription2=self.create_subscription(
+      Disturbance, subscribe_address2, self.listener_callback2, 10
     )
 
     self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/cmd_vel")
@@ -34,6 +43,11 @@ class ModelNode(Node):
     self.get_logger().info('ship_number[%s] Subscribe: n_p="%s", rudder_angle="%s"'%(self.ship_number, msg.n_p, msg.rudder_angle_degree))
     self.n_p=msg.n_p
     self.rudder_angle_degree=msg.rudder_angle_degree
+
+  def listener_callback2(self, msg):
+    self.get_logger().info('ship_number[%s] Subscribe: X_d="%s", Y_d="%s"'%(self.ship_number, msg.X_d, msg.Y_d))
+    self.X_d=msg.X_d
+    self.Y_d=msg.Y_d
 
   def sender_callback(self):
     delta_time=self.get_parameter("delta_time").value
@@ -149,11 +163,11 @@ class ModelNode(Node):
     N_R = -(-0.5+aH*xH)*F_N*np.cos(rudder_angle)
     
     # 状態計算
-    u_dot = ((X_H+X_R+X_P)+(m+my)*v_now*r_now+xG*m*r_now**2)/(m+mx)
+    u_dot = ((X_H+X_R+X_P+self.X_D)+(m+my)*v_now*r_now+xG*m*r_now**2)/(m+mx)
     twist.linear.x = u_now + u_dot * delta_time
 
     #d_v =(Y_H+Y_R-(m+mx)*X[0]*X[2]-xG*m*d_r)/(m+my)
-    v_dot = (xG**2*m**2*u_now*r_now-(N_H+N_R)*xG*m+((Y_H+Y_R)-(m+mx)*u_now*r_now)*(Izz+Jzz+xG**2*m))/((Izz+Jzz+xG**2*m)*(m+my)-xG**2*m**2)
+    v_dot = (xG**2*m**2*u_now*r_now-(N_H+N_R)*xG*m+((Y_H+Y_R+self.Y_d)-(m+mx)*u_now*r_now)*(Izz+Jzz+xG**2*m))/((Izz+Jzz+xG**2*m)*(m+my)-xG**2*m**2)
     twist.linear.y = v_now + v_dot * delta_time
 
     #d_r = (N_H+N_R-xG*m*(d_v+X[0]*X[2]))/(Izz+Jzz+xG**2*m)
