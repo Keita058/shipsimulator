@@ -46,8 +46,8 @@ class ModelNode(Node):
 
   def listener_callback2(self, msg):
     self.get_logger().info('ship_number[%s] Subscribe: X_d="%s", Y_d="%s"'%(self.ship_number, msg.X_d, msg.Y_d))
-    self.X_d=msg.X_d
-    self.Y_d=msg.Y_d
+    self.X_d=msg.x_d
+    self.Y_d=msg.y_d
 
   def sender_callback(self):
     delta_time=self.get_parameter("delta_time").value

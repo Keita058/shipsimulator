@@ -33,9 +33,8 @@ class DisturabnceNode(Node):
         self.psi=msg.angular.z
     
     def sender_callback(self):
-        delta_time=self.get_parameter("delta_time").value
         msg=Disturbance()
-        msg.X_d,msg.Y_d = self.get_disturbance()
+        msg.x_d,msg.y_d = self.get_disturbance()
         self.pub_disturbance.publish(msg)
         self.get_logger().info('ship_number[%s] Publish: X_d=%s, Y_d=%s'%(self.ship_number, msg.X_d, msg.Y_d))
 
