@@ -19,7 +19,7 @@ class MmgControllerNode(Node):
             Joy, subscribe_address, self.listener_callback, 10
         )
 
-        self.declare_parameter("delta_time",0.1)
+        self.declare_parameter("delta_time",1.0)
         self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/control_input")
         publish_address = (
             self.get_parameter("publish_address").get_parameter_value().string_value
@@ -31,15 +31,15 @@ class MmgControllerNode(Node):
 
     def listener_callback(self,data):
         self.n_p += (data.buttons[2]*5-data.buttons[0]*5)
-        self.n_p += (data.axes[2]-data.axes[5])*0.03
+        self.n_p += (data.axes[2]-data.axes[5])*0.3
 
-        self.rudder_angle_degree += -data.axes[0]*0.03
+        self.rudder_angle_degree += -data.axes[0]*0.3
         self.rudder_angle_degree += (data.buttons[1]*5-data.buttons[3]*5)
 
         if self.n_p<0:
             self.n_p=0.0
-        elif self.n_p>120:
-            self.n_p=120.0
+        elif self.n_p>30:
+            self.n_p=30.0
         if self.rudder_angle_degree<-45:
             self.rudder_angle_degree=-45.0
         elif self.rudder_angle_degree>45:
@@ -59,7 +59,7 @@ def main(args=None):
     rclpy.init(args=args)
 
     exec = SingleThreadedExecutor()
-    num_of_ships = 2
+    num_of_ships = 1
     nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
     for ship_number in range(num_of_ships):
         globals()[nodes[ship_number]] = MmgControllerNode(ship_number+1)
