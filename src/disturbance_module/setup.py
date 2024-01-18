@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'disturance_node = disturbance_module.disturbance_node:main',
+            'disturbance_node = disturbance_module.disturbance_node:main',
         ],
     },
 )

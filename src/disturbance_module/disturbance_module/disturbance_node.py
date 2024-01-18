@@ -9,6 +9,8 @@ class DisturabnceNode(Node):
     def __init__(self,ship_number):
         super().__init__("disturbance")
         self.ship_number=ship_number
+        self.psi=0.0
+        self.x_G=0.25
 
         self.declare_parameter("delta_time",1.0)
         self.declare_parameter("X_d_0",10.0)
@@ -34,9 +36,9 @@ class DisturabnceNode(Node):
     
     def sender_callback(self):
         msg=Disturbance()
-        msg.x_d,msg.y_d = self.get_disturbance()
+        msg.x_d,msg.y_d,msg.n_d = self.get_disturbance()
         self.pub_disturbance.publish(msg)
-        self.get_logger().info('ship_number[%s] Publish: X_d=%s, Y_d=%s'%(self.ship_number, msg.X_d, msg.Y_d))
+        self.get_logger().info('ship_number[%s] Publish: X_d=%s, Y_d=%s, N_d=%s'%(self.ship_number, msg.x_d, msg.y_d, msg.n_d))
 
     def get_disturbance(self):
         X_d_0=self.get_parameter("X_d_0").value
@@ -46,10 +48,12 @@ class DisturabnceNode(Node):
         X_d=np.random.normal(X_d_0,sigma_X_d)
         Y_d=np.random.normal(Y_d_0,sigma_Y_d)
         #船体座標系への変換
+        self.psi=self.psi*np.pi/180.0
         X_d_ship=X_d*np.cos(self.psi)-Y_d*np.sin(self.psi)
         Y_d_ship=X_d*np.sin(self.psi)+Y_d*np.cos(self.psi)
+        N_d_ship=Y_d_ship*self.x_G
 
-        return X_d_ship,Y_d_ship
+        return X_d_ship,Y_d_ship,N_d_ship
 
 def main(args=None):
     rclpy.init(args=args)

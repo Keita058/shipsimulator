@@ -18,6 +18,7 @@ class ModelNode(Node):
     self.rudder_angle_degree=0.0
     self.X_d=0.0
     self.Y_d=0.0
+    self.N_d=0.0
     self.declare_parameter("delta_time", 1.0)
     self.set_ship_params()
 
@@ -48,6 +49,7 @@ class ModelNode(Node):
     self.get_logger().info('ship_number[%s] Subscribe: X_d="%s", Y_d="%s"'%(self.ship_number, msg.X_d, msg.Y_d))
     self.X_d=msg.x_d
     self.Y_d=msg.y_d
+    self.N_d=msg.n_d
 
   def sender_callback(self):
     delta_time=self.get_parameter("delta_time").value
@@ -167,11 +169,11 @@ class ModelNode(Node):
     twist.linear.x = u_now + u_dot * delta_time
 
     #d_v =(Y_H+Y_R-(m+mx)*X[0]*X[2]-xG*m*d_r)/(m+my)
-    v_dot = (xG**2*m**2*u_now*r_now-(N_H+N_R)*xG*m+((Y_H+Y_R+self.Y_d)-(m+mx)*u_now*r_now)*(Izz+Jzz+xG**2*m))/((Izz+Jzz+xG**2*m)*(m+my)-xG**2*m**2)
+    v_dot = (xG**2*m**2*u_now*r_now-(N_H+N_R+self.N_d)*xG*m+((Y_H+Y_R+self.Y_d)-(m+mx)*u_now*r_now)*(Izz+Jzz+xG**2*m))/((Izz+Jzz+xG**2*m)*(m+my)-xG**2*m**2)
     twist.linear.y = v_now + v_dot * delta_time
 
     #d_r = (N_H+N_R-xG*m*(d_v+X[0]*X[2]))/(Izz+Jzz+xG**2*m)
-    r_dot = ((N_H+N_R)*(m+my)-xG*m*(Y_H+Y_R-(m+mx)*u_now*r_now)-xG*m*u_now*r_now*(m+my))/((Izz+Jzz+xG**2*m)*(m+my)-xG**2*m**2)
+    r_dot = ((N_H+N_R+self.N_d)*(m+my)-xG*m*(Y_H+Y_R+self.Y_d-(m+mx)*u_now*r_now)-xG*m*u_now*r_now*(m+my))/((Izz+Jzz+xG**2*m)*(m+my)-xG**2*m**2)
     twist.angular.z = r_now + r_dot * delta_time
 
     return twist
