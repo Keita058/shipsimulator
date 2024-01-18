@@ -16,6 +16,8 @@ find_package(rosidl_default_generators REQUIRED)
 set(msg_files
   "msg/Control.msg"
   "msg/LOSangle.msg"
+  "msg/PPguid.msg"
+  "msg/Disturbance.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
