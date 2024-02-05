@@ -11,7 +11,7 @@ class MmgControllerNode(Node):
         """init."""
         super().__init__("controller")
         self.ship_number=ship_number
-        self.n_p=0.0
+        self.n_p=10.0
         self.rudder_angle_degree=0.0
         self.declare_parameter("subscribe_address","/joy"+str(ship_number))
         subscribe_address=(self.get_parameter("subscribe_address").get_parameter_value().string_value)
@@ -19,7 +19,7 @@ class MmgControllerNode(Node):
             Joy, subscribe_address, self.listener_callback, 10
         )
 
-        self.declare_parameter("delta_time",1.0)
+        self.declare_parameter("delta_time",0.1)
         self.declare_parameter("publish_address", "/ship"+str(ship_number)+"/control_input")
         publish_address = (
             self.get_parameter("publish_address").get_parameter_value().string_value
@@ -36,10 +36,10 @@ class MmgControllerNode(Node):
         self.rudder_angle_degree += -data.axes[0]*0.3
         self.rudder_angle_degree += (data.buttons[1]*5-data.buttons[3]*5)
 
-        if self.n_p<0:
-            self.n_p=0.0
-        elif self.n_p>30:
-            self.n_p=30.0
+        if self.n_p<10:
+            self.n_p=10.0
+        elif self.n_p>50:
+            self.n_p=50.0
         if self.rudder_angle_degree<-45:
             self.rudder_angle_degree=-45.0
         elif self.rudder_angle_degree>45:

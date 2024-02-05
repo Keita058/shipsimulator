@@ -9,7 +9,7 @@ class WaypointNode(Node):
         super().__init__('waypoint')
         self.ship_number=ship_number
 
-        self.declare_parameter("delta_time",1.0)
+        self.declare_parameter("delta_time",0.1)
         self.declare_parameter("publish_address","/ship"+str(self.ship_number)+"/wp_info")
         publish_address=self.get_parameter("publish_address").get_parameter_value().string_value
         self.pub_wp_info=self.create_publisher(Float64MultiArray, publish_address, 10)

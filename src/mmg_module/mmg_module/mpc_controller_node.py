@@ -2,7 +2,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from rclpy.executors import SingleThreadedExecutor
-from shipsim_msgs_module.msg import LOSangle
+from shipsim_msgs_module.msg import MPCguid
 from shipsim_msgs_module.msg import Control
 import numpy as np
 import do_mpc
@@ -15,6 +15,7 @@ class MPCControllerNode(Node):
         self.n_p=0.0
         self.rudder_angle_degree=0.0
         self.LOS_angle=0.0
+        self.track_error=0.0
 
         #Subscriber
         self.declare_parameter("subscribe_address1", "/ship"+str(ship_number)+"/obs_pose")
@@ -30,7 +31,7 @@ class MPCControllerNode(Node):
         self.declare_parameter("subscribe_address3", "/ship"+str(ship_number)+"/guidance")
         subscribe_address3=(self.get_parameter("subscribe_address3").get_parameter_value().string_value)
         self.subscription3 = self.create_subscription(
-            LOSangle, subscribe_address3, self.listener_callback3, 10
+            MPCguid, subscribe_address3, self.listener_callback3, 10
         )
 
         #Publisher
@@ -58,6 +59,7 @@ class MPCControllerNode(Node):
     def listener_callback3(self,msg):
         #self.get_logger().info('ship_number[%s] Subscribe: LOS_angle="%s"'%(self.ship_number, msg.LOS_angle))
         self.LOS_angle=msg.los_angle
+        self.track_error=msg.track_error
     
     def sender_callback(self):
         self.msg=Control()
@@ -82,7 +84,7 @@ class MPCControllerNode(Node):
         )
         Pose=(self.x, self.y, self.psi)
         Vel=(self.u, self.v, self.r)
-        mpc=MPC_Control(Pose=Pose, Vel=Vel, LOS_angle=self.LOS_angle, n_p=self.n_p, rudder_angle_degree=self.rudder_angle_degree,basic_params=basic_params,mpc_params=mpc_params)
+        mpc=MPC_Control(Pose=Pose, Vel=Vel, track_error=self.track_error, n_p=self.n_p, rudder_angle_degree=self.rudder_angle_degree,basic_params=basic_params,mpc_params=mpc_params)
         self.msg.rudder_angle_degree,self.msg.n_p=mpc.get_mpc_input() #TODO: calculate n_p, rudder_angle_degree by MPC
         self.n_p=self.msg.n_p
         self.rudder_angle_degree=self.msg.rudder_angle_degree
@@ -93,7 +95,7 @@ class MPCControllerNode(Node):
 def main(args=None):
     rclpy.init(args=args)
     exec = SingleThreadedExecutor()
-    num_of_ships = 2
+    num_of_ships = 1
     nodes = ["node"+str(ship_number) for ship_number in range(1,num_of_ships+1)]
     for ship_number in range(num_of_ships):
         globals()[nodes[ship_number]] = MPCControllerNode(ship_number+1)
@@ -110,10 +112,10 @@ if __name__=="__main__":
     main()
 
 class MPC_Control:
-    def __init__(self, Pose, Vel, LOS_angle, n_p, rudder_angle_degree,basic_params,mpc_params):
+    def __init__(self, Pose, Vel, track_error, n_p, rudder_angle_degree,basic_params,mpc_params):
         self.x_now, self.y_now, self.psi_now = Pose
         self.u_now, self.v_now, self.r_now = Vel
-        self.LOS_angle = LOS_angle
+        self.LOS_angle = track_error
         self.n_p_m = n_p
         self.rudder_angle_degree_m = rudder_angle_degree
         self.basic_params = basic_params
@@ -162,9 +164,9 @@ class MPC_Control:
         model.set_rhs('n_p',(n_p-n_p_set))
     
     def set_evaluation_func(self,model, mpc):
-        c1=100.0
+        c1=10.0
         c2=1.0
-        lterm=c1*(model.x['ψ']-self.LOS_angle)**2+c2*(model.x['u']-self.u_ref)**2
+        lterm=c1*(self.track_error)**2+c2*(model.x['u']-self.u_ref)**2
         mterm=lterm
         mpc.set_objective(mterm=mterm,lterm=lterm)
 
@@ -229,7 +231,6 @@ class MPC_Control:
             u0=mpc.make_step(x0)
             x0=simulator.make_step(u0)
         u0=(u0[0][0],u0[1][0])
-
         return u0
 
 
@@ -243,7 +244,7 @@ class MMG_Model:
         self.B = basic_params.B
         self.d = basic_params.d
         self.nabla = basic_params.nabla
-        self.x_G = basic_params.x_G
+        self.x_G_dash = basic_params.x_G_dash
         self.C_b = basic_params.C_b
         self.D_p = basic_params.D_p
         self.H_R = basic_params.H_R
@@ -272,6 +273,7 @@ class MMG_Model:
         self.J_z = basic_params.J_z
         self.x_H = basic_params.x_H
         self.x_R = basic_params.x_R
+        self.x_G = basic_params.x_G
 
         self.k_0 = mmg_params.k_0
         self.k_1 = mmg_params.k_1
@@ -295,23 +297,27 @@ class MMG_Model:
         self.N_rrr_dash = mmg_params.N_rrr_dash
         self.R_0 = mmg_params.R_0
 
+
     def X_H(self,u,v,r):
-        U=np.sqrt(u**2+v**2)
+        vm=v-self.x_G*r
+        U=np.sqrt(u**2+vm**2)
         r_dash=r*self.L_pp/U
-        v_dash=v/U
-        return 0.5*self.ρ*self.L_pp*self.d*U**2*self.X_H_dash(v_dash,r_dash)
+        vm_dash=vm/U
+        return 0.5*self.ρ*self.L_pp*self.d*U**2*self.X_H_dash(vm_dash,r_dash)
 
     def Y_H(self,u,v,r):
-        U=np.sqrt(u**2+v**2)
+        vm=v-self.x_G*r
+        U=np.sqrt(u**2+vm**2)
         r_dash=r*self.L_pp/U
-        v_dash=v/U
-        return 0.5*self.ρ*self.L_pp*self.d*U**2*self.Y_H_dash(v_dash,r_dash)
+        vm_dash=vm/U
+        return 0.5*self.ρ*self.L_pp*self.d*U**2*self.Y_H_dash(vm_dash,r_dash)
 
     def N_H(self,u,v,r):
-        U=np.sqrt(u**2+v**2)
+        vm=v-self.x_G*r
+        U=np.sqrt(u**2+vm**2)
         r_dash=r*self.L_pp/U
-        v_dash=v/U
-        return 0.5*self.ρ*self.L_pp**2*self.d*U**2*self.N_H_dash(v_dash,r_dash)
+        vm_dash=vm/U
+        return 0.5*self.ρ*self.L_pp**2*self.d*U**2*self.N_H_dash(vm_dash,r_dash)
 
     #斜航角ではなく横方向の速度の無次元化成分を使う？
     def X_H_dash(self,β,r_dash):
@@ -363,7 +369,7 @@ class BasicParams:
     B:float  # 船幅[m]
     d:float  # 喫水[m]
     nabla:float  # 排水量[m^3]
-    x_G:float  # 重心位置[m]
+    x_G_dash:float  # 重心位置[m]
     C_b:float  # 方形係数[-]
     D_p:float  # プロペラ直径[m]
     H_R:float  # 舵高さ[m]
@@ -392,6 +398,7 @@ class BasicParams:
     J_z: float
     x_H: float
     x_R: float
+    x_G: float
 
 @dataclasses.dataclass
 class MPCParams:
@@ -436,7 +443,7 @@ class MMGManeuveringParams:
     N_rrr_dash: float
     R_0: float
 
-def set_basic_params(ρ, L_pp, B, d, nabla, x_G, C_b, D_p, H_R, A_R, t_P, w_P0, 
+def set_basic_params(ρ, L_pp, B, d, nabla, x_G_dash, C_b, D_p, H_R, A_R, t_P, w_P0, 
     m_x_dash, m_y_dash, J_z_dash, t_R, x_R_dash, a_H, x_H_dash,
     γ_R_minus, γ_R_plus, l_r_dash, x_P_dash, ϵ, κ, f_α):
     return BasicParams(ρ=ρ,
@@ -444,7 +451,7 @@ def set_basic_params(ρ, L_pp, B, d, nabla, x_G, C_b, D_p, H_R, A_R, t_P, w_P0,
                         B=B, 
                         d=d, 
                         nabla=nabla, 
-                        x_G=x_G,
+                        x_G_dash=x_G_dash,
                         C_b=C_b, 
                         D_p=D_p, 
                         H_R=H_R, 
@@ -472,7 +479,8 @@ def set_basic_params(ρ, L_pp, B, d, nabla, x_G, C_b, D_p, H_R, A_R, t_P, w_P0,
                         m_y=(0.5 * ρ * (L_pp ** 2) * d) * m_y_dash,
                         J_z=(0.5 * ρ * (L_pp ** 4) * d) * J_z_dash,
                         x_H=x_H_dash * L_pp,
-                        x_R=x_R_dash*L_pp
+                        x_R=x_R_dash*L_pp,
+                        x_G=x_G_dash*L_pp
     )
 
 def set_mpc_params(n_horizon, t_step, n_robust, store_full_solution, 

@@ -58,9 +58,21 @@ def control_to_csv(message, csv_file_name, cols):
 
 def guidance_to_csv(message, csv_file_name, cols):
     time = [message[i][0]*1e-9 - message[0][0]*1e-9 for i in range(len(message))]
-    los_angle = [message[i][1].los_angle for i in range(len(message))]
+    #los_angle = [message[i][1].los_angle for i in range(len(message))]
+    alpha_t = [message[i][1].alpha_t for i in range(len(message))]
     track_error = [message[i][1].track_error for i in range(len(message))]
-    message_list = [time, los_angle, track_error]
+    #message_list = [time, los_angle, track_error]
+    message_list = [time, alpha_t, track_error]
+    dic = {cols[i]:message_list[i] for i in range(len(cols))}
+    df = pd.DataFrame(dic)
+    df.to_csv(csv_file_name)
+
+def disturbance_to_csv(message, csv_file_name, cols):
+    time= [message[i][0]*1e-9 - message[0][0]*1e-9 for i in range(len(message))]
+    x_d = [message[i][1].x_d for i in range(len(message))]
+    y_d = [message[i][1].y_d for i in range(len(message))]
+    n_d = [message[i][1].n_d for i in range(len(message))]
+    message_list = [time, x_d, y_d, n_d]
     dic = {cols[i]:message_list[i] for i in range(len(cols))}
     df = pd.DataFrame(dic)
     df.to_csv(csv_file_name)
@@ -73,6 +85,7 @@ def main(bag_file_name):
     input_cols = ['time', 'n_p', 'rudder']
     pose_cols = ['time', 'x', 'y', 'z', 'roll', 'pitch', 'yaw']
     guidance_cols = ['time', 'LOS angle', 'TrackError']
+    disturbance_col = ['time', 'x_d', 'y_d', 'n_d']
 
     parser = BagFileParser(bag_file)
     topic_names = list(parser.topic_type)
@@ -95,6 +108,8 @@ def main(bag_file_name):
             twist_to_csv(msg, file_name, pose_cols)
         elif 'guidance' in file_name:
             guidance_to_csv(msg, file_name, guidance_cols)
+        elif 'disturbance' in file_name:
+            disturbance_to_csv(msg, file_name, disturbance_col)
         else:
             print("Error :" + topic_name)
             print("This message type is not defined. \n Please check bag_to_csv.py")

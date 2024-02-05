@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'LOSguidance_node = guidance_module.LOSguidance_node:main',
+            'PPguidance_node = guidance_module.PPguidance_node:main',
         ],
     },
 )

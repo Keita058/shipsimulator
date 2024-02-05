@@ -13,8 +13,8 @@ class DisturabnceNode(Node):
         self.x_G=0.25
 
         self.declare_parameter("delta_time",1.0)
-        self.declare_parameter("X_d_0",10.0)
-        self.declare_parameter("Y_d_0",10.0)
+        self.declare_parameter("X_d_0",0.0)
+        self.declare_parameter("Y_d_0",0.0)
         self.declare_parameter("sigma_X_d",0.0)
         self.declare_parameter("sigma_Y_d",0.0)
 
@@ -49,8 +49,8 @@ class DisturabnceNode(Node):
         Y_d=np.random.normal(Y_d_0,sigma_Y_d)
         #船体座標系への変換
         self.psi=self.psi*np.pi/180.0
-        X_d_ship=X_d*np.cos(self.psi)-Y_d*np.sin(self.psi)
-        Y_d_ship=X_d*np.sin(self.psi)+Y_d*np.cos(self.psi)
+        X_d_ship=X_d*np.cos(self.psi)+Y_d*np.sin(self.psi)
+        Y_d_ship=-X_d*np.sin(self.psi)+Y_d*np.cos(self.psi)
         N_d_ship=Y_d_ship*self.x_G
 
         return X_d_ship,Y_d_ship,N_d_ship

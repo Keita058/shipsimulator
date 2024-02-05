@@ -19,7 +19,10 @@ class ModelNode(Node):
     self.X_d=0.0
     self.Y_d=0.0
     self.N_d=0.0
-    self.declare_parameter("delta_time", 1.0)
+    self.cmd_vel_Twist.linear.x=0.0
+    self.cmd_vel_Twist.linear.y=0.0
+    self.cmd_vel_Twist.angular.z=0.0
+    self.declare_parameter("delta_time", 0.1)
     self.set_ship_params()
 
     self.declare_parameter("subscribe_address", "/ship"+str(ship_number)+"/cmd_input")
@@ -28,7 +31,7 @@ class ModelNode(Node):
       Control, subscribe_address, self.listener_callback, 10
     )
 
-    self.declare_paramete("subscribe_address2", "/ship"+str(ship_number)+"/disturbance")
+    self.declare_parameter("subscribe_address2", "/ship"+str(ship_number)+"/disturbance")
     subscribe_address2=(self.get_parameter("subscribe_address2").get_parameter_value().string_value)
     self.subscription2=self.create_subscription(
       Disturbance, subscribe_address2, self.listener_callback2, 10
@@ -41,12 +44,12 @@ class ModelNode(Node):
     self.timer=self.create_timer(delta_time,self.sender_callback)
 
   def listener_callback(self,msg):
-    self.get_logger().info('ship_number[%s] Subscribe: n_p="%s", rudder_angle="%s"'%(self.ship_number, msg.n_p, msg.rudder_angle_degree))
+    #self.get_logger().info('ship_number[%s] Subscribe: n_p="%s", rudder_angle="%s"'%(self.ship_number, msg.n_p, msg.rudder_angle_degree))
     self.n_p=msg.n_p
     self.rudder_angle_degree=msg.rudder_angle_degree
 
   def listener_callback2(self, msg):
-    self.get_logger().info('ship_number[%s] Subscribe: X_d="%s", Y_d="%s"'%(self.ship_number, msg.X_d, msg.Y_d))
+    #self.get_logger().info('ship_number[%s] Subscribe: X_d="%s", Y_d="%s, N_d="%s"'%(self.ship_number, msg.x_d, msg.y_d, msg.n_d))
     self.X_d=msg.x_d
     self.Y_d=msg.y_d
     self.N_d=msg.n_d
@@ -150,7 +153,7 @@ class ModelNode(Node):
     u_R = np.sqrt(η*(κ*ϵ*8.0*k0*n_p**2*Dp**4/np.pi)**2) if J==0.0 else u_now*(1-wP)*ϵ*np.sqrt(η*(1.0+κ*(np.sqrt(1.0+8.0*K_T/(np.pi*J**2))-1))**2+(1-η)) #舵に流入する前後方向速度成分
     #u_R_ = (1-wpo)**2*ϵ**2*(η*(1.0+κ*(np.sqrt(1.0+8.0*K_T/(np.pi*J**2))-1))**2+(1-η)) #無次元化
     U_R = np.sqrt(u_R**2+v_R**2) #舵への流入速度
-    α_R = rudder_angle - np.arctan(v_R/u_R) #舵への流入角度
+    α_R = 0.0 if u_R==0.0 else rudder_angle - np.arctan(v_R/u_R) #舵への流入角度
     #α_R_ = X[6] - np.arctan2(v_R_,u_R_) #無次元化
     F_N = 0.5*AR*ρ*fa*(U_R**2)*np.sin(α_R)
     #F_N_ = AR/(L*d)*fa*(u_R_**2+v_R_**2)*np.sin(α_R_) #無次元化
@@ -167,10 +170,13 @@ class ModelNode(Node):
     
     N_H = 0.5*ρ*(L**2)*d*(U**2)*(N_v*vm_dash+N_r*r_dash+N_vvr*(vm_dash**2)*r_dash+N_vrr*vm_dash*(r_dash**2)+N_vvv*(vm_dash**3)+N_rrr*(r_dash**3))
     #N_H = 0.5*ρ*(L**2)*d*(U**2)*(N_v*v_dash+(N_r-xG_*m_)*r_dash+N_vvr*(v_dash**2)*r_dash+N_vrr*v_dash*(r_dash**2)+N_vvv*(v_dash**3)+N_rrr*(r_dash**3)) #付加質量で調整
-    N_R = -(-0.5+aH*xH)*F_N*np.cos(rudder_angle)
+    N_R = -(-0.5*L+aH*xH)*F_N*np.cos(rudder_angle)
     
+    self.get_logger().info('ship_number[%s] X_H="%s", X_R="%s", X_P="%s"'%(self.ship_number, X_H, X_R, X_P))
+    self.get_logger().info('ship_number[%s] Y_H="%s", Y_R="%s"'%(self.ship_number, Y_H, Y_R))
+    self.get_logger().info('ship_number[%s] N_H="%s", N_R="%s"'%(self.ship_number, N_H, N_R))
     # 状態計算
-    u_dot = ((X_H+X_R+X_P+self.X_D)+(m+my)*vm_now*r_now+xG*m*r_now**2)/(m+mx)
+    u_dot = ((X_H+X_R+X_P+self.X_d)+(m+my)*vm_now*r_now+xG*m*r_now**2)/(m+mx)
     twist.linear.x = u_now + u_dot * delta_time
 
     #d_r = (N_H+N_R-xG*m*(d_v+X[0]*X[2]))/(Izz+Jzz+xG**2*m)

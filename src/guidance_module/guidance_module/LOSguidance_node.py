@@ -29,7 +29,7 @@ class LosguidanceNode(Node):
             Twist, subscribe_address2, self.listener_callback2, 10
             )
 
-        self.declare_parameter("delta_time",1.0)
+        self.declare_parameter("delta_time",0.1)
         self.declare_parameter("publish_address", "/ship"+str(self.ship_number)+"/guidance")
         publish_address = (
             self.get_parameter("publish_address").get_parameter_value().string_value

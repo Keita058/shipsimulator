@@ -18,6 +18,7 @@ set(msg_files
   "msg/LOSangle.msg"
   "msg/PPguid.msg"
   "msg/Disturbance.msg"
+  "msg/MPCguid.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
